@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cập nhật cấu hình IAM on Amazon EKS Workshop</title>
+    <link>/vi/1-preparation/1.4-configure-role/1.4.3-update-iam-setting/</link>
+    <description>Recent content in Cập nhật cấu hình IAM on Amazon EKS Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 01 Jan 1970 07:33:41 +0700</lastBuildDate>
+    
+	<atom:link href="/vi/1-preparation/1.4-configure-role/1.4.3-update-iam-setting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

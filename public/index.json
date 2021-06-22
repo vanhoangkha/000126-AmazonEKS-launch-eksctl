@@ -1,0 +1,155 @@
+[
+{
+	"uri": "/",
+	"title": "Amazon EKS Workshop",
+	"tags": [],
+	"description": "",
+	"content": "Amazon EKS Workshop Tổng quan Trong bài lab này, chúng ta sẽ tiến hành tạo một EKS cluster sử dụng công cụ eksctl.\neksctl là một công cụ command line đơn giản để tạo và quản trị các clusters trên EKS - dịch vụ Kubernetes được quản lý bởi AWS. eksctl được viết bằng ngôn ngữ Go, sử dụng CloudFormation để quản lý EKS cluster dưới dạng các CloudFormation stack.\nBài lab này sẽ được sử dụng để chuẩn bị cho các bài lab tiếp theo trong chuỗi bài lab EKS Workshop.\nNội dung  Chuẩn bị Tạo EKS Cluster Triển khai K8s dashboard Dọn dẹp tài nguyên  "
+},
+{
+	"uri": "/1-preparation/",
+	"title": "Chuẩn bị",
+	"tags": [],
+	"description": "",
+	"content": "Chuẩn bị môi trường cho bài lab Trong phần này chúng ta sẽ thực hiện chuẩn bị AWS account của chúng ta để có thể thực hiện các bước tiếp theo của bài lab. Phần chuẩn bị này sẽ được sử dụng nhiều lần trong các bài lab tiếp theo của chuỗi bài lab EKS workshop.\nNội dung  Chuẩn bị IAM User Tạo một Workspace Cài đặt Kubernetes tools Cấu hình Role Clone Demo Repo Tạo AWS KMS CMK  "
+},
+{
+	"uri": "/1-preparation/1.1-iamuser/",
+	"title": "Chuẩn bị IAM User",
+	"tags": [],
+	"description": "",
+	"content": "Tạo IAM user với quyền admin Chúng ta sẽ tiến hành tạo một IAM user có tên là awsstudent-eks có quyền admin để sự dụng trong chuỗi bài lab Amazon EKS workshop.\n  Truy cập vào giao diện quản lý của dịch vụ IAM.\n Click Users.  Click Add User.    Tại trang Add User điền tên user là awsstudent-eks\n Click chọn Programmatic access. Click chọn AWS Management Console access. Click chọn Custom password. Đặt password tùy chọn và lưu lại thông tin password. ( Ở đây chúng ta sẽ đặt là awsstudent123!) Bỏ chọn User must create a new password at next sign-in. Click Next: Permission.    Click chọn Attach existing policies directly.  Click chọn policy Administrator Access. Click Next :Tags.    Click Next : Preview. Click Create user. Click Download .csv để download thông tin accesskey của user awsstudent-eks.  Click vào đường link để tiến hành login vào account của bạn bằng user awsstudent-eks. Tiếp theo chúng ta sẽ tiếp tục bài lab sử dụng user awsstudent-eks.     "
+},
+{
+	"uri": "/2-create-ekscluster/2.1-install-eksctl/",
+	"title": "Cài đặt eksctl",
+	"tags": [],
+	"description": "",
+	"content": "Cài đặt eksctl Trong phần này chúng ta sẽ thực hiện cài đặt công cụ eksctl vào Cloud9 Workspace.\n Chạy câu lệnh để tải về công cụ eksctl.  curl --silent --location \u0026quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz\u0026quot; | tar xz -C /tmp\rsudo mv -v /tmp/eksctl /usr/local/bin\rKiểm tra eksctl hoạt động hay không bằng câu lệnh dưới đây.  eksctl version\rKích hoạt tính năng bash-completion của eksctl  eksctl completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion\r"
+},
+{
+	"uri": "/3-create-k8sdashboard/3.1-install-dashboard/",
+	"title": "Triển khai K8s dashboard",
+	"tags": [],
+	"description": "",
+	"content": "Triển khai K8s dashboard Trong phần này chúng ta sẽ thực triển khai Kubernetes dashboard. Kubernetes dashboard không được triển khai mặc định.\nBạn có xem thêm thông tin về Kubernetes dashboard tại đây: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/\n Chạy câu lệnh dưới đây để triển khai Kubernetes dashboard  export DASHBOARD_VERSION=\u0026quot;v2.0.0\u0026quot;\rkubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHBOARD_VERSION}/aio/deploy/recommended.yaml\r\rKubernetes dashboard được triển khai trong một private cluster, chúng ta sẽ cần truy cập tới nó thông qua 1 proxy. kube-proxy đã sẵn sàng để chúng ta yêu cầu truy xuất tới dịch vụ của dashboard.\n\rChạy câu lệnh dưới đây để khởi chạy kube-proxy.  kubectl proxy --port=8080 --address=0.0.0.0 --disable-filter=true \u0026amp;\r\rCâu lệnh trên khởi chạy proxy và lắng nghe trên tất cả các interfaces. Đồng thời cũng vô hiệu hóa việc lọc các yêu cầu truy cập từ ngoài mạng local. .\nLệnh trên sẽ chạy ngầm dưới background và sẽ chạy cho tới khi phiên kết nối terminal hiện tại bị tắt.\n\rViệc chúng ta vô hiệu hóa lọc các yêu cầu truy cập từ ngoài mạng local chỉ để áp dụng cho môi trường lab. Không nên sử dụng trong môi trường Production.\\\n\r"
+},
+{
+	"uri": "/1-preparation/1.4-configure-role/1.4.1-create-iam-role/",
+	"title": "Tạo IAM Role",
+	"tags": [],
+	"description": "",
+	"content": "Tạo IAM Role cho Workspace  Click vào biểu tượng Cloud9.  Click Go To Your Dashboard.    Từ giao diện dashboard của Cloud9 chúng ta sẽ tiến hành truy cập vào giao diện của dịch vụ IAM.  Trong giao diện quản trị của dịch vụ IAM.  Click Roles. Click Create role.    Tại trang Create role.  Click EC2. Click Next: Permissions.    Tại trang Attach permissions policies  Click chọn AdministratorAccess. Click Next: Tags.    Tại trang Add tags.  Click Next: Review.   Tại trang Review.  Đặt tên Role name : eksworkshop-admin Click Create role.    "
+},
+{
+	"uri": "/1-preparation/1.4-configure-role/1.4.2-attach-iam-role/",
+	"title": "Gán IAM Role",
+	"tags": [],
+	"description": "",
+	"content": "Gán IAM Role cho Workspace  Quay trở lại giao diện của Cloud9 Workspace.  Click vào icon tròn màu xám góc bên trên tay phải. Click Mange EC2 Instance.    Trong giao diện quản lý EC2.  Click chọn EC2 instance của Cloud9 Workspace. Click Actions. Click Security. Click Modify IAM role.    Trong trang Modify IAM role.  Click chọn eksworkshop-admin role. Click Save.    "
+},
+{
+	"uri": "/3-create-k8sdashboard/3.2-access-dashboard/",
+	"title": "Truy cập vào dashboard",
+	"tags": [],
+	"description": "",
+	"content": "Truy cập vào dashboard Sau khi triển khai dashboard, chúng ta sẽ tiến hành truy cập vào Kubernetes dashboard.\n Tại giao diện Cloud9 Workspace.  Click Tools. Click Preview. Click Preview Running Application.    Click chuột vào vị trí cuối của URL và dán thêm đoạn path dưới đây.  /api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/\rCloud9 Preview browser không hỗ trợ chứng thực token, sau khi chúng ta truy cập vào giao diện login, Click vào nút PopOut để mở URL dashboard sang một tab trình duyệt mới.  URL Dashboard sẽ hiển thị trang Sign in ở tab trình duyệt mới như dưới đây.\nMở 1 tab terminal mới trên Cloud9 Workspace, chạy lệnh dưới đây.  aws eks get-token --cluster-name eksworkshop-eksctl | jq -r '.status.token'\r5. Copy đoạn token sinh ra từ câu lệnh trên và paste vào phần Enter token. + Click Sign in. Chúc mừng bạn đã truy cập vào Kubernetes dashboard thành công.   Nếu proxy báo lỗi, bạn có thể thử log out và sign in vào Kubernetes dashboard lại.\n\r"
+},
+{
+	"uri": "/2-create-ekscluster/",
+	"title": "Tạo EKS Cluster ",
+	"tags": [],
+	"description": "",
+	"content": "Tạo EKS Cluster Trong phần này chúng ta sẽ thực hiện tạo EKS cluster bằng công cụ eksctl đồng thời thực hiện kiểm tra EKS cluster vừa tạo.\nNội dung  Cài đặt eksctl Tạo một EKS cluster Kiểm tra EKS cluster Chứng thực trên Console  "
+},
+{
+	"uri": "/2-create-ekscluster/2.2-create-ekscluster/",
+	"title": "Tạo một EKS cluster",
+	"tags": [],
+	"description": "",
+	"content": "Tạo một EKS cluster Trong phần này chúng ta sẽ thực hiện tạo một EKS cluster bằng công cụ eksctl. Đảm bảo bạn đã hoàn tất tất cả các bước chuẩn bị trước đó.\n Chạy câu lệnh để tạo ra một file cài đặt có tên là eksworkshop.yaml. Đây là file cấu hình được sử dụng khi chúng ta tạo EKS cluster bằng eksctl.  eksctl version phải mới hơn 0.24.0 để triển khai EKS cluster phiên bản 1.17\n\rcat \u0026lt;\u0026lt; EOF \u0026gt; eksworkshop.yaml\r---\rapiVersion: eksctl.io/v1alpha5\rkind: ClusterConfig\rmetadata:\rname: eksworkshop-eksctl\rregion: ${AWS_REGION}\rversion: \u0026quot;1.17\u0026quot;\ravailabilityZones: [\u0026quot;${AZS[0]}\u0026quot;, \u0026quot;${AZS[1]}\u0026quot;, \u0026quot;${AZS[2]}\u0026quot;]\rmanagedNodeGroups:\r- name: nodegroup\rdesiredCapacity: 3\rinstanceType: t3.small\rssh:\renableSsm: true\r# To enable all of the control plane logs, uncomment below:\r# cloudWatch:\r# clusterLogging:\r# enableTypes: [\u0026quot;*\u0026quot;]\rsecretsEncryption:\rkeyARN: ${MASTER_ARN}\rEOF\r\rChúng ta sẽ tạo phiên bản EKS cluster thấp hơn version mới nhất để làm bài lab nâng cấp sau này.\n\rTiến hành tạo EKS cluster bằng cách chạy câu lệnh dưới đây.  eksctl create cluster -f eksworkshop.yaml\rViệc tạo EKS cluster sẽ mất khoảng 15 phút.\n\rChúng ta đã hoàn tất việc tạo một EKS cluster.  "
+},
+{
+	"uri": "/1-preparation/1.2-create-workspace/",
+	"title": "Tạo một Workspace",
+	"tags": [],
+	"description": "",
+	"content": "Tạo một Workspace sử dụng AWS Cloud9 Ở bước này, chúng ta sẽ tiến hành tạo một Workspace để quản trị Amazon EKS sử dụng dịch vụ AWS Cloud9.\n Truy cập vào giao diện quản lý của dịch vụ Cloud9.  Click Create Environment.    Tại trang Name environment điền tên Name là eksworkshop  Click Next step.    Tại trang Configure settings.  Click chọn t3.small. Kéo thanh scroll bar xuống dưới. Click Next step.     Tại trang Review.\n Kiểm tra lại cấu hình. Click Create environment.    Sau khi Cloud9 Workspace được tạo hoàn tất.\n Click X để đóng các tab mặc định.    Click + , sau đó click New Terminal để mở giao diện terminal mới.  Chạy đoạn script sau đây để tăng dung lượng Cloud9 Workspace lên 30 GB.  Copy đoạn lệnh sau và paste vào giao diện terminal trên workspace của bạn. Sau khi thực thi các lệnh xong, Cloud 9 Workspace sẽ restart lại.    pip3 install --user --upgrade boto3\rexport instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)\rpython -c \u0026quot;import boto3\rimport os\rfrom botocore.exceptions import ClientError ec2 = boto3.client('ec2')\rvolume_info = ec2.describe_volumes(\rFilters=[\r{\r'Name': 'attachment.instance-id',\r'Values': [\ros.getenv('instance_id')\r]\r}\r]\r)\rvolume_id = volume_info['Volumes'][0]['VolumeId']\rtry:\rresize = ec2.modify_volume( VolumeId=volume_id, Size=30\r)\rprint(resize)\rexcept ClientError as e:\rif e.response['Error']['Code'] == 'InvalidParameterValue':\rprint('ERROR MESSAGE: {}'.format(e))\u0026quot;\rif [ $? -eq 0 ]; then\rsudo reboot\rfi\rChúng ta đã hoàn tất việc tạo workspace cho Amazon EKS workshop. Tiếp theo chúng ta sẽ tiến hành eksctl.  "
+},
+{
+	"uri": "/1-preparation/1.3-install-eksctl/",
+	"title": "Cài đặt Kubernetes tools",
+	"tags": [],
+	"description": "",
+	"content": "Cài đặt công cụ quản trị Kubernetes Các cluster của Amazon EKS sẽ cần công cụ kubectl và kubelet và aws-cli hoặc aws-iam-authenticator để cho phép chứng thực IAM cho Kubernetes cluster của bạn.\n Copy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cài đặt kubectl.  sudo curl --silent --location -o /usr/local/bin/kubectl \\\rhttps://amazon-eks.s3.us-west-2.amazonaws.com/1.17.11/2020-09-18/bin/linux/amd64/kubectl\rsudo chmod +x /usr/local/bin/kubectl\rCopy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cập nhật awscli.  sudo pip install --upgrade awscli \u0026amp;\u0026amp; hash -r\rCopy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cài đặt các công cụ hỗ trợ xử lý text trên dòng lệnh.  sudo yum -y install jq gettext bash-completion moreutils\rjq giống như sed cho dữ liệu JSON - bạn có thể sử dụng nó để cắt và lọc cũng như ánh xạ và chuyển đổi dữ liệu có cấu trúc với cùng một cách dễ dàng giống như sed, awk, grep.\n\recho 'yq() {\rdocker run --rm -i -v \u0026quot;${PWD}\u0026quot;:/workdir mikefarah/yq \u0026quot;$@\u0026quot;\r}' | tee -a ~/.bashrc \u0026amp;\u0026amp; source ~/.bashrc\rKiểm tra các công cụ đã được cài đặt bằng cách chạy lệnh dưới đây.  kubectl completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion\rBật tính năng tự động hoàn tất cho công cụ kubectl bằng cách chạy lệnh dưới đây:  kubectl completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion\r5. Thiết lập phiên bản 2.2.0 khi sử dụng AWS Load Balancer Controller\necho 'export LBC_VERSION=\u0026quot;v2.2.0\u0026quot;' \u0026gt;\u0026gt; ~/.bash_profile\r. ~/.bash_profile\r\rTrước đây chúng ta sử dụng Kubernetes in-tree Load Balancer cho đối tượng instance, và AWS Load Balancer Controller cho đối tượng IP. Khi sử dụng AWS Load Balancer Controller phiên bản 2.2.0 bạn có thể tạo Network Load Balancer cho cả đối tượng instance và đối tượng IP..\nĐọc thêm tại:.\nhttps://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html\n\r"
+},
+{
+	"uri": "/2-create-ekscluster/2.3-test-ekscluster/",
+	"title": "Kiểm tra EKS cluster",
+	"tags": [],
+	"description": "",
+	"content": "Kiểm tra EKS cluster  Chạy câu lệnh để kiểm tra các nodes được tạo. Chúng ta sẽ thấy 3 nodes.  kubectl get nodes\rLưu lại thông tin EKS node role để sử dụng cho các bài lab tiếp theo.  STACK_NAME=$(eksctl get nodegroup --cluster eksworkshop-eksctl -o json | jq -r '.[].StackName')\rROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType==\u0026quot;AWS::IAM::Role\u0026quot;) | .PhysicalResourceId')\recho \u0026quot;export ROLE_NAME=${ROLE_NAME}\u0026quot; | tee -a ~/.bash_profile\r\rTrình chạy kubelet trong Amazon EKS node sẽ gọi tới các AWS APIs và các EKS node sẽ nhận được quyền để thực hiện các API call đó thông qua EKS node role.\n\r"
+},
+{
+	"uri": "/3-create-k8sdashboard/",
+	"title": "Triển khai K8s dashboard",
+	"tags": [],
+	"description": "",
+	"content": "Triển khai K8s dashboard Trong phần này chúng ta sẽ thực triển khai Kubernetes dashboard và kết nối thông qua Cloud9 Workspace.\nNội dung  Triển khai K8s dashboard Truy cập vào dashboard  "
+},
+{
+	"uri": "/2-create-ekscluster/2.4-console-credentials/",
+	"title": "Chứng thực trên Console",
+	"tags": [],
+	"description": "",
+	"content": "Chứng thực trên Console Mặc dù đa số các bước trong workshop được chạy từ Cloud9 Workspace, nhưng trong quá trình làm lab, sẽ tốt hơn nếu chúng ta có thể vào được EKS console để xem được các đối tượng cấu hình như Deployments,Pods,Nodes. .\nĐể đáp ứng yêu cầu này, chúng ta sẽ cấp quyền cho IAM User / Role trong EKS cluster. .\nMặc định thì IAM User / Role tạo EKS cluster sẽ được cấp quyền này, tuy nhiên nếu bạn tạo cluster khi sử dụng chứng thực IAM tạm thời của Cloud9 thì bạn sẽ phải làm lại các bước dưới đây.\n\r IAM Users và Roles được gán vào 1 EKS Kubernetes cluster thông qua ConfigMap tên là aws-auth. Chúng ta có thể sử dụng công cụ eksctl để làm việc này với một câu lệnh. Bạn sẽ cần xác định thông tin IAM / Role đúng (ARN) để thêm quyền truy cập console.  Để get IAM / Role ARN, chạy câu lệnh sau trong Cloud9 Workspace:    c9builder=$(aws cloud9 describe-environment-memberships --environment-id=$C9_PID | jq -r '.memberships[].userArn')\rif echo ${c9builder} | grep -q user; then\rrolearn=${c9builder}\recho Role ARN: ${rolearn}\relif echo ${c9builder} | grep -q assumed-role; then\rassumedrolename=$(echo ${c9builder} | awk -F/ '{print $(NF-1)}')\rrolearn=$(aws iam get-role --role-name ${assumedrolename} --query Role.Arn --output text) echo Role ARN: ${rolearn}\rfi\rChạy câu lệnh đưới đây để thực hiện map định danh IAM với EKS cluster username là admin.  eksctl create iamidentitymapping --cluster eksworkshop-eksctl --arn ${rolearn} --group system:masters --username admin\r\rTrong thực tế, chúng ta sẽ phân quyền chi tiết hơn chứ không map mọi user vào \u0026ndash;username admin trong EKS cluster.\n\rKiểm tra lại thông tin AWS auth map với câu lệnh dưới.  kubectl describe configmap -n kube-system aws-auth\r"
+},
+{
+	"uri": "/1-preparation/1.4-configure-role/",
+	"title": "Cấu hình Role",
+	"tags": [],
+	"description": "",
+	"content": "Cấu hình Role cho Workspace Trong bước này chúng ta sẽ tiến hành tạo IAM Role, sau đó gán IAM Role vào Cloud9 Workspace chúng ta đã tạo.\nNội dung  Tạo IAM Role cho Workspace Gán IAM Role cho Workspace Cập nhật cấu hình IAM cho Workspace  "
+},
+{
+	"uri": "/1-preparation/1.4-configure-role/1.4.3-update-iam-setting/",
+	"title": "Cập nhật cấu hình IAM",
+	"tags": [],
+	"description": "",
+	"content": "Cập nhật cấu hình IAM cho Workspace Cloud9 sẽ quản lý thông tin chứng thực IAM một cách tự động. Cấu hình mặc định này hiện tại không tương thích với chứng thực EKS thông qua IAM, chúng ta sẽ cần phải vô hiệu hóa tính năng này và sử dụng IAM Role.\n\r  Click vào biểu tượng Preferences.\n Kéo thành scroll bar xuống dưới. Click AWS Settings.     Chuyển chế độ AWS managed temporaly credentials sang disabled (màu đỏ)\n Click X để đóng tab Preferences.     Để đảm bảo các thông tin chứng thực tạm không được lưu lại trong Cloud9, chúng ta sẽ xóa tất cả những thông tin chứng thực đang tồn tại bằng câu lệnh dưới đây.\n  rm -vf ${HOME}/.aws/credentials\rTiếp theo chúng ta sẽ cấu hình aws cli sử dụng Region hiện tại.  export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)\rexport AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')\rexport AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))\rKiểm tra xem AWS_REGION đã được thiết lập đúng Region hiện tại chưa.  test -n \u0026quot;$AWS_REGION\u0026quot; \u0026amp;\u0026amp; echo AWS_REGION is \u0026quot;$AWS_REGION\u0026quot; || echo AWS_REGION is not set\rTiếp theo chúng ta sẽ lưu các thông tin cấu hình vào bash_profile  echo \u0026quot;export ACCOUNT_ID=${ACCOUNT_ID}\u0026quot; | tee -a ~/.bash_profile\recho \u0026quot;export AWS_REGION=${AWS_REGION}\u0026quot; | tee -a ~/.bash_profile\recho \u0026quot;export AZS=(${AZS[@]})\u0026quot; | tee -a ~/.bash_profile\raws configure set default.region ${AWS_REGION}\raws configure get default.region\rKiểm tra IAM Role  Chúng ta sẽ sử dụng câu lệnh để kiểm tra Cloud9 IDE đang sử dụng IAM Role có chính xác không.    aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q \u0026amp;\u0026amp; echo \u0026quot;IAM role valid\u0026quot; || echo \u0026quot;IAM role NOT valid\u0026quot;\rNếu kết quả là IAM role NOT valid, hãy kiểm tra lại các bước trước xem thông tin IAM role bạn tạo và gán vào Cloud9 Workspace có chính xác không nhé.\n\r"
+},
+{
+	"uri": "/4-cleanup/",
+	"title": "Dọn dẹp tài nguyên  ",
+	"tags": [],
+	"description": "",
+	"content": "Chúng ta sẽ tiến hành xóa các tài nguyên theo thứ tự sau\n Dừng proxy và xóa Kubernetes dashboard.  # kill proxy\rpkill -f 'kubectl proxy --port=8080'\r# delete dashboard\rkubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHBOARD_VERSION}/aio/deploy/recommended.yaml\runset DASHBOARD_VERSION\rXóa các demo repo và các ứng dụng triển khai  cd ~/environment/ecsdemo-frontend\rkubectl delete -f kubernetes/service.yaml\rkubectl delete -f kubernetes/deployment.yaml\rcd ~/environment/ecsdemo-crystal\rkubectl delete -f kubernetes/service.yaml\rkubectl delete -f kubernetes/deployment.yaml\rcd ~/environment/ecsdemo-nodejs\rkubectl delete -f kubernetes/service.yaml\rkubectl delete -f kubernetes/deployment.yaml\rexport DASHBOARD_VERSION=\u0026quot;v2.0.0\u0026quot;\rkubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHBOARD_VERSION}/src/deploy/recommended/kubernetes-dashboard.yaml\rXóa EKS cluster. Quá trình xóa sẽ mất khoảng 15 phút và bạn có thể xem trên giao diện của dịch vụ Cloud Formation https://console.aws.amazon.com/cloudformation/home  eksctl delete cluster --name=eksworkshop-eksctl\rXóa Cloud9 Workspace  Vào giao diện của dịch vụ Cloud9. Click chọn Instance eksworkshop. Click Delete.  Gõ Delete để xác nhận. Click Delete để thực hiện xóa Cloud9 Workspace.     "
+},
+{
+	"uri": "/1-preparation/1.5-clone-demo-repo/",
+	"title": "Clone Demo Repo",
+	"tags": [],
+	"description": "",
+	"content": "Clone Demo Repo Ở bước này, chúng ta sẽ tiến hành clone các demo repo dành cho việc deploy các dịch vụ thử nghiệm.\n Copy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để tiến hành clone các demo repo.  cd ~/environment\rgit clone https://github.com/brentley/ecsdemo-frontend.git\rgit clone https://github.com/brentley/ecsdemo-nodejs.git\rgit clone https://github.com/brentley/ecsdemo-crystal.git\rCopy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cập nhật awscli.  sudo pip install --upgrade awscli \u0026amp;\u0026amp; hash -r\rCopy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cài đặt các công cụ hỗ trợ xử lý text trên dòng lệnh.  sudo yum -y install jq gettext bash-completion moreutils\rjq giống như sed cho dữ liệu JSON - bạn có thể sử dụng nó để cắt và lọc cũng như ánh xạ và chuyển đổi dữ liệu có cấu trúc với cùng một cách dễ dàng giống như sed, awk, grep.\n\recho 'yq() {\rdocker run --rm -i -v \u0026quot;${PWD}\u0026quot;:/workdir mikefarah/yq \u0026quot;$@\u0026quot;\r}' | tee -a ~/.bashrc \u0026amp;\u0026amp; source ~/.bashrc\rKiểm tra các công cụ đã được cài đặt bằng cách chạy lệnh dưới đây.  kubectl completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion\rBật tính năng tự động hoàn tất cho công cụ kubectl bằng cách chạy lệnh dưới đây:  kubectl completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion\r5. Thiết lập phiên bản 2.2.0 khi sử dụng AWS Load Balancer Controller\necho 'export LBC_VERSION=\u0026quot;v2.2.0\u0026quot;' \u0026gt;\u0026gt; ~/.bash_profile\r. ~/.bash_profile\r\rTrước đây chúng ta sử dụng Kubernetes in-tree Load Balancer cho đối tượng instance, và AWS Load Balancer Controller cho đối tượng IP. Khi sử dụng AWS Load Balancer Controller phiên bản 2.2.0 bạn có thể tạo Network Load Balancer cho cả đối tượng instance và đối tượng IP..\nĐọc thêm tại:.\nhttps://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html\n\r"
+},
+{
+	"uri": "/1-preparation/1.6-createkms-cmk/",
+	"title": "Tạo AWS KMS CMK",
+	"tags": [],
+	"description": "",
+	"content": "Tạo AWS KMS CMK Ở bước này, chúng ta sẽ tiến hành tạo một CMK cho EKS cluster sử dụng khi mã hóa các Kubernetes secrets.\n Chạy lệnh để tạo key và alias.  aws kms create-alias --alias-name alias/eksworkshop --target-key-id $(aws kms create-key --query KeyMetadata.Arn --output text)\rLấy thông tin ARN của key chúng ta vừa tạo, lưu vào biến môi trường MASTER_ARN để dùng sau này.  export MASTER_ARN=$(aws kms describe-key --key-id alias/eksworkshop --query KeyMetadata.Arn --output text)\rLưu thông tin biến môi trường MASTER_ARN vào bash_profile  echo \u0026quot;export MASTER_ARN=${MASTER_ARN}\u0026quot; | tee -a ~/.bash_profile\rKiểm tra KMS đã được tạo trong giao diện của dịch vụ Key Management Service.   "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
