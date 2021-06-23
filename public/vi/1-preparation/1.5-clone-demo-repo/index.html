@@ -12,21 +12,21 @@
     <title>Clone Demo Repo :: Amazon EKS Workshop</title>
 
     
-    <link href="/css/nucleus.css?1624326445" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1624326445" rel="stylesheet">
-    <link href="/css/hybrid.css?1624326445" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1624326445" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1624326445" rel="stylesheet">
-    <link href="/css/auto-complete.css?1624326445" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1624326445" rel="stylesheet">
-    <link href="/css/theme.css?1624326445" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1624326445" rel="stylesheet">
+    <link href="/css/nucleus.css?1624429959" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1624429959" rel="stylesheet">
+    <link href="/css/hybrid.css?1624429959" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1624429959" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1624429959" rel="stylesheet">
+    <link href="/css/auto-complete.css?1624429959" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1624429959" rel="stylesheet">
+    <link href="/css/theme.css?1624429959" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1624429959" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1624326445" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1624429959" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1624326445"></script>
+    <script src="/js/jquery-3.3.1.min.js?1624429959"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1624326445"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1624326445"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1624429959"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1624429959"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1624326445"></script>
+<script type="text/javascript" src="/js/search.js?1624429959"></script>
 
     
   </div>
@@ -829,51 +829,6 @@ git clone https://github.com/brentley/ecsdemo-frontend.git
 git clone https://github.com/brentley/ecsdemo-nodejs.git
 git clone https://github.com/brentley/ecsdemo-crystal.git
 </code></pre><p><img src="/images/1-eks/clone.png?width=90pc" alt="Clone Repo"></p>
-<ol start="2">
-<li>Copy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cập nhật awscli.</li>
-</ol>
-<pre><code>sudo pip install --upgrade awscli &amp;&amp; hash -r
-</code></pre><p><img src="/images/1-eks/k8stool2.png?width=90pc" alt="Cài k8s tool"></p>
-<ol start="3">
-<li>Copy và Paste đoạn lệnh dưới đây vào Terminal của Cloud9 Workspace để cài đặt các công cụ hỗ trợ xử lý text trên dòng lệnh.</li>
-</ol>
-<pre><code>sudo yum -y install jq gettext bash-completion moreutils
-
-</code></pre><p><img src="/images/1-eks/k8stool3.png?width=90pc" alt="Cài k8s tool">
-
-<div class="notices tip" ><p><strong>jq</strong> giống như sed cho dữ liệu JSON - bạn có thể sử dụng nó để cắt và lọc cũng như ánh xạ và chuyển đổi dữ liệu có cấu trúc với cùng một cách dễ dàng giống như  sed, awk, grep.</p>
-</div>
-</p>
-<pre><code>echo 'yq() {
-  docker run --rm -i -v &quot;${PWD}&quot;:/workdir mikefarah/yq &quot;$@&quot;
-}' | tee -a ~/.bashrc &amp;&amp; source ~/.bashrc
-</code></pre><p><img src="/images/1-eks/k8stool4.png?width=90pc" alt="Cài k8s tool"></p>
-<ol start="3">
-<li>Kiểm tra các công cụ đã được cài đặt bằng cách chạy lệnh dưới đây.</li>
-</ol>
-<pre><code>kubectl completion bash &gt;&gt;  ~/.bash_completion
-. /etc/profile.d/bash_completion.sh
-. ~/.bash_completion
-
-</code></pre><p><img src="/images/1-eks/k8stool5.png?width=90pc" alt="Cài k8s tool"></p>
-<ol start="4">
-<li>Bật tính năng tự động hoàn tất cho công cụ kubectl bằng cách chạy lệnh dưới đây:</li>
-</ol>
-<pre><code>kubectl completion bash &gt;&gt;  ~/.bash_completion
-. /etc/profile.d/bash_completion.sh
-. ~/.bash_completion
-</code></pre><p><img src="/images/1-eks/k8stool6.png?width=90pc" alt="Cài k8s tool">
-5. Thiết lập phiên bản 2.2.0 khi sử dụng AWS Load Balancer Controller</p>
-<pre><code>echo 'export LBC_VERSION=&quot;v2.2.0&quot;' &gt;&gt;  ~/.bash_profile
-.  ~/.bash_profile
-
-</code></pre>
-<div class="notices tip" ><p>Trước đây chúng ta sử dụng Kubernetes in-tree Load Balancer cho đối tượng instance, và AWS Load Balancer Controller cho đối tượng IP.
-Khi sử dụng AWS Load Balancer Controller phiên bản 2.2.0 bạn có thể tạo Network Load Balancer cho cả đối tượng instance và đối tượng IP..<br>
-Đọc thêm tại:.<br>
-<a href="https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html">https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html</a></p>
-</div>
-
 
 
 
@@ -1251,19 +1206,19 @@ Khi sử dụng AWS Load Balancer Controller phiên bản 2.2.0 bạn có thể 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1624326445"></script>
-    <script src="/js/perfect-scrollbar.min.js?1624326445"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1624326445"></script>
-    <script src="/js/jquery.sticky.js?1624326445"></script>
-    <script src="/js/featherlight.min.js?1624326445"></script>
-    <script src="/js/highlight.pack.js?1624326445"></script>
+    <script src="/js/clipboard.min.js?1624429959"></script>
+    <script src="/js/perfect-scrollbar.min.js?1624429959"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1624429959"></script>
+    <script src="/js/jquery.sticky.js?1624429959"></script>
+    <script src="/js/featherlight.min.js?1624429959"></script>
+    <script src="/js/highlight.pack.js?1624429959"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1624326445"></script>
-    <script src="/js/learn.js?1624326445"></script>
-    <script src="/js/hugo-learn.js?1624326445"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1624429959"></script>
+    <script src="/js/learn.js?1624429959"></script>
+    <script src="/js/hugo-learn.js?1624429959"></script>
 
-    <link href="/mermaid/mermaid.css?1624326445" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1624326445"></script>
+    <link href="/mermaid/mermaid.css?1624429959" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1624429959"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

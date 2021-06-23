@@ -47,10 +47,10 @@ echo 'yq() {
 
 3. Kiểm tra các công cụ đã được cài đặt bằng cách chạy lệnh dưới đây.
 ```
-kubectl completion bash >>  ~/.bash_completion
-. /etc/profile.d/bash_completion.sh
-. ~/.bash_completion
-
+for command in kubectl jq envsubst aws
+  do
+    which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
+  done
 ```
 ![Cài k8s tool](/images/1-eks/k8stool5.png?width=90pc)
 
