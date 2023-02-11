@@ -1,10 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>/1-introduce/amazon_eks/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/amazon_eks/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/amazon_eks/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/aws_event/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/aws_event/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/aws_event/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/aws_event/portal/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/aws_event/portal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/aws_event/portal/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/self_paced/account/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/self_paced/account/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/self_paced/account/"
+                />
+  </url><url>
+    <loc>/4-beginner/dashboard/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/dashboard/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/dashboard/"
+                />
+  </url><url>
+    <loc>/4-beginner/dashboard/dashboard/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/dashboard/dashboard/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/dashboard/dashboard/"
+                />
+  </url><url>
+    <loc>/1-introduce/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/"
+                />
+  </url><url>
     <loc>/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -15,294 +97,403 @@
                 hreflang="en"
                 href="/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_architecture/architecture_control_and_data_overview/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/"
+                href="/vi/1-introduce/kubernetes_architecture/architecture_control_and_data_overview/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/"
+                href="/1-introduce/kubernetes_architecture/architecture_control_and_data_overview/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.1-iamuser/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/3-eksctl/prerequisites/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.1-iamuser/"
+                href="/vi/3-eksctl/prerequisites/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.1-iamuser/"
+                href="/3-eksctl/prerequisites/"
                 />
-  </url>
-  
-  <url>
-    <loc>/2-create-ekscluster/2.1-install-eksctl/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/amazon_eks/eks_control_plane/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-create-ekscluster/2.1-install-eksctl/"
+                href="/vi/1-introduce/amazon_eks/eks_control_plane/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-create-ekscluster/2.1-install-eksctl/"
+                href="/1-introduce/amazon_eks/eks_control_plane/"
                 />
-  </url>
-  
-  <url>
-    <loc>/3-create-k8sdashboard/3.1-install-dashboard/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/what_kubernetes/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/3-create-k8sdashboard/3.1-install-dashboard/"
+                href="/vi/1-introduce/kubernetes_basics/what_kubernetes/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/3-create-k8sdashboard/3.1-install-dashboard/"
+                href="/1-introduce/kubernetes_basics/what_kubernetes/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.4-configure-role/1.4.1-create-iam-role/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/2-prerequisites/self_paced/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.4-configure-role/1.4.1-create-iam-role/"
+                href="/vi/2-prerequisites/self_paced/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.4-configure-role/1.4.1-create-iam-role/"
+                href="/2-prerequisites/self_paced/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.4-configure-role/1.4.2-attach-iam-role/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/4-beginner/dashboard/connect/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.4-configure-role/1.4.2-attach-iam-role/"
+                href="/vi/4-beginner/dashboard/connect/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.4-configure-role/1.4.2-attach-iam-role/"
+                href="/4-beginner/dashboard/connect/"
                 />
-  </url>
-  
-  <url>
-    <loc>/3-create-k8sdashboard/3.2-access-dashboard/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_architecture/architecture_control/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/3-create-k8sdashboard/3.2-access-dashboard/"
+                href="/vi/1-introduce/kubernetes_architecture/architecture_control/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/3-create-k8sdashboard/3.2-access-dashboard/"
+                href="/1-introduce/kubernetes_architecture/architecture_control/"
                 />
-  </url>
-  
-  <url>
-    <loc>/2-create-ekscluster/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/amazon_eks/eks_customers/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-create-ekscluster/"
+                href="/vi/1-introduce/amazon_eks/eks_customers/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-create-ekscluster/"
+                href="/1-introduce/amazon_eks/eks_customers/"
                 />
-  </url>
-  
-  <url>
-    <loc>/2-create-ekscluster/2.2-create-ekscluster/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_architecture/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-create-ekscluster/2.2-create-ekscluster/"
+                href="/vi/1-introduce/kubernetes_architecture/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-create-ekscluster/2.2-create-ekscluster/"
+                href="/1-introduce/kubernetes_architecture/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.2-create-workspace/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/kubernetes_nodes/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.2-create-workspace/"
+                href="/vi/1-introduce/kubernetes_basics/kubernetes_nodes/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.2-create-workspace/"
+                href="/1-introduce/kubernetes_basics/kubernetes_nodes/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.3-install-eksctl/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/3-eksctl/launcheks/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.3-install-eksctl/"
+                href="/vi/3-eksctl/launcheks/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.3-install-eksctl/"
+                href="/3-eksctl/launcheks/"
                 />
-  </url>
-  
-  <url>
-    <loc>/2-create-ekscluster/2.3-test-ekscluster/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/2-prerequisites/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-create-ekscluster/2.3-test-ekscluster/"
+                href="/vi/2-prerequisites/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-create-ekscluster/2.3-test-ekscluster/"
+                href="/2-prerequisites/"
                 />
-  </url>
-  
-  <url>
-    <loc>/3-create-k8sdashboard/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/4-beginner/dashboard/cleanup/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/3-create-k8sdashboard/"
+                href="/vi/4-beginner/dashboard/cleanup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/3-create-k8sdashboard/"
+                href="/4-beginner/dashboard/cleanup/"
                 />
-  </url>
-  
-  <url>
-    <loc>/2-create-ekscluster/2.4-console-credentials/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/2-prerequisites/workspace/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-create-ekscluster/2.4-console-credentials/"
+                href="/vi/2-prerequisites/workspace/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-create-ekscluster/2.4-console-credentials/"
+                href="/2-prerequisites/workspace/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.4-configure-role/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_architecture/architecture_worker/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.4-configure-role/"
+                href="/vi/1-introduce/kubernetes_architecture/architecture_worker/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.4-configure-role/"
+                href="/1-introduce/kubernetes_architecture/architecture_worker/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.4-configure-role/1.4.3-update-iam-setting/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/amazon_eks/eks_high_architecture/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.4-configure-role/1.4.3-update-iam-setting/"
+                href="/vi/1-introduce/amazon_eks/eks_high_architecture/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.4-configure-role/1.4.3-update-iam-setting/"
+                href="/1-introduce/amazon_eks/eks_high_architecture/"
                 />
-  </url>
-  
-  <url>
-    <loc>/4-cleanup/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/4-cleanup/"
+                href="/vi/1-introduce/kubernetes_basics/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/4-cleanup/"
+                href="/1-introduce/kubernetes_basics/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.5-clone-demo-repo/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/k8s_overviews/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.5-clone-demo-repo/"
+                href="/vi/1-introduce/kubernetes_basics/k8s_overviews/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.5-clone-demo-repo/"
+                href="/1-introduce/kubernetes_basics/k8s_overviews/"
                 />
-  </url>
-  
-  <url>
-    <loc>/1-preparation/1.6-createkms-cmk/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+  </url><url>
+    <loc>/3-eksctl/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-preparation/1.6-createkms-cmk/"
+                href="/vi/3-eksctl/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-preparation/1.6-createkms-cmk/"
+                href="/3-eksctl/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/3-eksctl/test/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/3-eksctl/test/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/3-eksctl/test/"
+                />
+  </url><url>
+    <loc>/4-beginner/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/"
+                />
+  </url><url>
+    <loc>/3-eksctl/console/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/3-eksctl/console/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/3-eksctl/console/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/iamrole/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/iamrole/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/iamrole/"
+                />
+  </url><url>
+    <loc>/1-introduce/amazon_eks/eks_high_level/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/amazon_eks/eks_high_level/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/amazon_eks/eks_high_level/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/k8stools/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/k8stools/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/k8stools/"
+                />
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/k8s_detail_1/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/kubernetes_basics/k8s_detail_1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/kubernetes_basics/k8s_detail_1/"
+                />
+  </url><url>
+    <loc>/1-introduce/kubernetes_architecture/cluster_setup_options/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/kubernetes_architecture/cluster_setup_options/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/kubernetes_architecture/cluster_setup_options/"
+                />
+  </url><url>
+    <loc>/1-introduce/amazon_eks/stay_tuned/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/amazon_eks/stay_tuned/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/amazon_eks/stay_tuned/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/ec2instance/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/ec2instance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/ec2instance/"
+                />
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/k8s_detail_2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/kubernetes_basics/k8s_detail_2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/kubernetes_basics/k8s_detail_2/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/workspaceiam/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/workspaceiam/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/workspaceiam/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/clone/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/clone/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/clone/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/kmskey/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/kmskey/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/kmskey/"
+                />
+  </url><url>
     <loc>/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -314,9 +505,7 @@
                 hreflang="en"
                 href="/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -329,5 +518,4 @@
                 href="/tags/"
                 />
   </url>
-  
 </urlset>

@@ -44,7 +44,7 @@ That's all !
 For example:
 
 * To match a file suffix of 'jpg', use **.*jpg** (not *.jpg).
-* To match file names ending in 'jpg' or 'png', use **.*(jpg|png)**
+* To match file names ending in 'jpg' or 'png?featherlight=false&width=90pc', use **.*(jpg|png?featherlight=false&width=90pc)**
 
 ### Examples
 

@@ -44,7 +44,7 @@ C'est tout !
 Par exemple:
 
 * Pour trouver les fichiers avec le suffixe 'jpg', utilisez **.*jpg** (pas *.jpg).
-* Pour trouver les fichiers avec les suffixe 'jpg' ou 'png', utilisez **.*(jpg|png)**
+* Pour trouver les fichiers avec les suffixe 'jpg' ou 'png?featherlight=false&width=90pc', utilisez **.*(jpg|png?featherlight=false&width=90pc)**
 
 ### Exemples
 

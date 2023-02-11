@@ -598,9 +598,9 @@ Content for chapter one.
 Images have a similar syntax to links but include a preceding exclamation point.
 
 ```markdown
-![Minion](https://octodex.github.com/images/minion.png)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc)
 ```
-![Minion](https://octodex.github.com/images/minion.png)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc)
 
 or
 ```markdown
@@ -628,22 +628,22 @@ With a reference later in the document defining the URL location:
 Add HTTP parameters `width` and/or `height` to the link image to resize the image. Values are CSS values (default is `auto`).
 
 ```markdown
-![Minion](https://octodex.github.com/images/minion.png?width=20pc)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?width=20pc)
 ```
 
-![Minion](https://octodex.github.com/images/minion.png?width=20pc)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?width=20pc)
 
 ```markdown
-![Minion](https://octodex.github.com/images/minion.png?height=50px)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?height=50px)
 ```
 
-![Minion](https://octodex.github.com/images/minion.png?height=50px)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?height=50px)
 
 ```markdown
-![Minion](https://octodex.github.com/images/minion.png?height=50px&width=300px)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?height=50px&width=300px)
 ```
 
-![Minion](https://octodex.github.com/images/minion.png?height=50px&width=300px)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?height=50px&width=300px)
 
 ### Add CSS classes
 
@@ -669,5 +669,5 @@ Add a HTTP `classes` parameter to the link image to add CSS classes. `shadow`and
 Add a HTTP `featherlight` parameter to the link image to disable lightbox. By default lightbox is enabled using the featherlight.js plugin. You can disable this by defining `featherlight` to `false`. 
 
 ```markdown
-![Minion](https://octodex.github.com/images/minion.png?featherlight=false)
+![Minion](https://octodex.github.com/images/minion.png?featherlight=false&width=90pc?featherlight=false)
 ```
