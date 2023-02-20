@@ -48,6 +48,8 @@ secretsEncryption:
   keyARN: ${MASTER_ARN}
 EOF
 ```
+![createkmskey](/images/prerequisites/createyaml.png?width=90pc)
+
 Next, use the file you created as the input for the eksctl cluster creation.
 
 {{% notice info %}}
@@ -57,6 +59,10 @@ We are deliberatly launching at least one Kubernetes version behind the latest a
 ```
 eksctl create cluster -f eksworkshop.yaml
 ```
+
+![createkmskey](/images/prerequisites/createcluster.png?width=90pc)
+
+
 {{% notice info %}}
 Launching EKS and all the dependencies will take approximately 15 minutes
 {{% /notice %}}

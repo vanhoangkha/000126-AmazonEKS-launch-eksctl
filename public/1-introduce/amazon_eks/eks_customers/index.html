@@ -12,21 +12,21 @@
     <title>EKS Cluster Creation Workflow :: Introduction to Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1676137752" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1676137752" rel="stylesheet">
-    <link href="/css/hybrid.css?1676137752" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1676137752" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1676137752" rel="stylesheet">
-    <link href="/css/auto-complete.css?1676137752" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1676137752" rel="stylesheet">
-    <link href="/css/theme.css?1676137752" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1676137752" rel="stylesheet">
+    <link href="/css/nucleus.css?1676872586" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1676872586" rel="stylesheet">
+    <link href="/css/hybrid.css?1676872586" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1676872586" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1676872586" rel="stylesheet">
+    <link href="/css/auto-complete.css?1676872586" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1676872586" rel="stylesheet">
+    <link href="/css/theme.css?1676872586" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1676872586" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1676137752" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1676872586" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1676137752"></script>
+    <script src="/js/jquery-3.3.1.min.js?1676872586"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1676137752"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1676137752"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1676872586"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1676872586"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1676137752"></script>
+<script type="text/javascript" src="/js/search.js?1676872586"></script>
 
     
   </div>
@@ -669,7 +669,7 @@
         
         ">
       <a href="/2-prerequisites/aws_event/">
-           <b> 2.1.1</b> At an AWS event
+           <b> 2.1</b> At an AWS event
           
             <i class="fas fa-check read-icon"></i>
           
@@ -827,13 +827,13 @@
  
   
     
-    <li data-nav-id="/2-prerequisites/iamrole/" title="Create an IAM role for your Workspace" class="dd-item 
+    <li data-nav-id="/2-prerequisites/k8stools/" title="Install Kubernetes Tools" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequisites/iamrole/">
-           <b> 2.4 </b> Create an IAM role for your Workspace
+      <a href="/2-prerequisites/k8stools/">
+           <b> 2.4 </b> Install Kubernetes Tools
           
             <i class="fas fa-check read-icon"></i>
           
@@ -855,13 +855,13 @@
  
   
     
-    <li data-nav-id="/2-prerequisites/k8stools/" title="Install Kubernetes Tools" class="dd-item 
+    <li data-nav-id="/2-prerequisites/iamrole/" title="Create an IAM role for your Workspace" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequisites/k8stools/">
-           <b> 2.3 </b> Install Kubernetes Tools
+      <a href="/2-prerequisites/iamrole/">
+           <b> 2.5 </b> Create an IAM role for your Workspace
           
             <i class="fas fa-check read-icon"></i>
           
@@ -889,7 +889,7 @@
         
         ">
       <a href="/2-prerequisites/ec2instance/">
-           <b> 2.5</b> Attach the IAM role to your Workspace
+           <b> 2.6</b> Attach the IAM role to your Workspace
           
             <i class="fas fa-check read-icon"></i>
           
@@ -917,7 +917,7 @@
         
         ">
       <a href="/2-prerequisites/workspaceiam/">
-           <b> 2.6 <b> Update IAM settings for your Workspace
+           <b> 2.7 <b> Update IAM settings for your Workspace
           
             <i class="fas fa-check read-icon"></i>
           
@@ -945,7 +945,7 @@
         
         ">
       <a href="/2-prerequisites/clone/">
-           <b> 2.7 <b> Clone the Service Repos
+           <b> 2.8 <b> Clone the Service Repos
           
             <i class="fas fa-check read-icon"></i>
           
@@ -973,7 +973,7 @@
         
         ">
       <a href="/2-prerequisites/kmskey/">
-           <b> 2.8 <b> Create an AWS KMS Custom Managed Key (CMK)
+           <b> 2.9 <b> Create an AWS KMS Custom Managed Key (CMK)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1008,7 +1008,7 @@
         
         ">
       <a href="/3-eksctl/">
-           <b>3. </b> Launch using eksctl
+           <b> 3.</b> Launch using eksctl
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1158,7 +1158,7 @@
         
         ">
       <a href="/4-beginner/">
-           <b>4. </b> Beginner
+           <b> 4.</b> Beginner
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1298,6 +1298,918 @@
 
             
           
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/" title="Deploy The Example Microservices" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/">
+           <b> 5.</b> Deploy The Example Microservices
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/deploynodejs/" title="Deploy NodeJS BackEnd API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/deploynodejs/">
+           <b> 5.1 <b> Deploy NodeJS BackEnd API
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/deploycrystal/" title="Deploy Crystal BackEnd API" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/deploycrystal/">
+           <b> 5.2 <b> Deploy Crystal BackEnd API
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/servicetype/" title="Let&#39;s check Service Types" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/servicetype/">
+           <b> 5.3 <b> Let&#39;s check Service Types
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/servicerole/" title="Ensure the ELB Service Role exists" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/servicerole/">
+           <b> 5.4 <b> Ensure the ELB Service Role exists
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/deployfrontend/" title="Deploy FrontEnd Service" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/deployfrontend/">
+           <b> 5.5 <b> Deploy FrontEnd Service
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/viewservices/" title="Find the Service Address" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/viewservices/">
+           <b> 5.6 <b> Find the Service Address
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/scalebackend/" title="Scale the Backend Services" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/scalebackend/">
+           <b> 5.7 <b> Scale the Backend Services
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/scalefrontend/" title="Scale the FrontEnd" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/scalefrontend/">
+           <b> 5.8 <b> Scale the FrontEnd
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/deploy/cleanup/" title="Cleanup the Applications" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/deploy/cleanup/">
+           <b> 5.9 <b> Cleanup the Applications
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/" title="Deploy The Example Microservices" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/">
+           <b> 6.</b> Deploy The Example Microservices
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_introduction/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_introduction/">
+           <b> 6.1 <b> Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_introduction/install/" title="Install Helm CLI" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_introduction/install/">
+           <b> 6.1.1 <b> Install Helm CLI
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_nginx/" title="Deploy nginx With Helm" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_nginx/">
+           <b> 6.2 <b> Deploy nginx With Helm
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_nginx/updatecharts/" title="Update the Chart Repository" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_nginx/updatecharts/">
+           <b> 6.2.1 <b> Update the Chart Repository
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_nginx/searchchart/" title="Search Chart Repositories" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_nginx/searchchart/">
+           <b> 6.2.2 <b> Search Chart Repositories
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_nginx/addbitnamirepo/" title="Add the Bitnami Repository" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_nginx/addbitnamirepo/">
+           <b> 6.2.3 <b> Add the Bitnami Repository
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_nginx/installnginx/" title="Deploy nginx With Helm" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_nginx/installnginx/">
+           <b> 6.2.4 <b> Deploy nginx With Helm
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_nginx/cleaningup/" title="Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_nginx/cleaningup/">
+           <b> 6.2.5 <b> Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/" title="Deploy Example Microservices Using Helm" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/">
+           <b> 6.3</b> Deploy Example Microservices Using Helm
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/create_chart/" title="Create a Chart" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/create_chart/">
+           <b> 6.3.1</b> Create a Chart
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/customize/" title="Customize Defaults" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/customize/">
+           <b> 6.3.2</b> Customize Defaults
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/deploy/" title="Deploy the eksdemo Chart" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/deploy/">
+           <b> 6.3.3</b> Deploy the eksdemo Chart
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/service/" title="Test the Service" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/service/">
+           <b> 6.3.4</b> Test the Service
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/rolling_back/" title="Rolling Back" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/rolling_back/">
+           <b> 6.3.5</b> Rolling Back
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/helm/helm_micro/cleanup/" title="Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/helm/helm_micro/cleanup/">
+           <b> 6.3.6</b> Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/healthchecks/" title="Health Checks" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/healthchecks/">
+           <b> 7.</b> Health Checks
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/healthchecks/livenessprobe/" title="Configure Livenesss Probe" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/healthchecks/livenessprobe/">
+           <b> 7.1</b> Configure Livenesss Probe
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/healthchecks/readinessprobe/" title="Configure Readiness Probe" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/healthchecks/readinessprobe/">
+           <b> 7.2</b> Configure Readiness Probe
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-beginner/healthchecks/cleanup/" title="Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-beginner/healthchecks/cleanup/">
+           <b> 7.3</b> Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
         
         </ul>
               
@@ -1393,7 +2305,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>12-02-2022</font></i>
+        <i><font color=orange>20-02-2022</font></i>
     </left>
     <left>
         <br>
@@ -2193,6 +3105,498 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
             
         
                     
@@ -2218,19 +3622,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1676137752"></script>
-    <script src="/js/perfect-scrollbar.min.js?1676137752"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1676137752"></script>
-    <script src="/js/jquery.sticky.js?1676137752"></script>
-    <script src="/js/featherlight.min.js?1676137752"></script>
-    <script src="/js/highlight.pack.js?1676137752"></script>
+    <script src="/js/clipboard.min.js?1676872586"></script>
+    <script src="/js/perfect-scrollbar.min.js?1676872586"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1676872586"></script>
+    <script src="/js/jquery.sticky.js?1676872586"></script>
+    <script src="/js/featherlight.min.js?1676872586"></script>
+    <script src="/js/highlight.pack.js?1676872586"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1676137752"></script>
-    <script src="/js/learn.js?1676137752"></script>
-    <script src="/js/hugo-learn.js?1676137752"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1676872586"></script>
+    <script src="/js/learn.js?1676872586"></script>
+    <script src="/js/hugo-learn.js?1676872586"></script>
 
-    <link href="/mermaid/mermaid.css?1676137752" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1676137752"></script>
+    <link href="/mermaid/mermaid.css?1676872586" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1676872586"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

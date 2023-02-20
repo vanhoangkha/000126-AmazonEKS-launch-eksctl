@@ -1,9 +1,9 @@
 ---
 title : "Beginner"
 date :  "`r Sys.Date()`" 
-weight : 4
+weight : 5
 chapter : false
-pre : " <b>4. </b> "
+pre : " <b> 4.</b> "
 ---
 
 Trong phần này, chúng ta sẽ biết được các kiến thức cơ bản về các thành phần của một cluster Kubernetes, cách cấu hình và quản lý cluster, và cách triển khai và quản lý các ứng dụng trên Kubernetes. Và chúng ta có thể nắm các kiến thức như:

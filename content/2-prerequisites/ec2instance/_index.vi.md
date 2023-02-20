@@ -1,9 +1,9 @@
 ---
 title : "Gán IAM role vào Workspace"
 ddate :  "`r Sys.Date()`" 
-weight : 5
+weight : 6
 chapter : false
-pre : " <b> 2.5</b> "
+pre : " <b> 2.6</b> "
 ---
 
 

@@ -47,6 +47,10 @@ secretsEncryption:
   keyARN: ${MASTER_ARN}
 EOF
 ```
+
+![createkmskey](/images/prerequisites/createyaml.png?width=90pc)
+
+
 Sau đó, sử dụng tệp mà bạn đã tạo là đầu vào cho việc tạo cluster eksctl.
 
 {{% notice info %}}
@@ -56,6 +60,10 @@ Chúng ta định tạo một phiên bản Kubernetes thấp hơn một phiên b
 ```
 eksctl create cluster -f eksworkshop.yaml
 ```
+![createkmskey](/images/prerequisites/createcluster.png?width=90pc)
+
+
 {{% notice info %}}
 Khởi chạy EKS và tất cả mọi thứ liên quan sẽ mất khoảng 15 phút
 {{% /notice %}}
+

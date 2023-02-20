@@ -1,9 +1,9 @@
 ---
 title : "Tạo IAM role cho workspace"
 date :  "`r Sys.Date()`" 
-weight : 4
+weight : 5
 chapter : false
-pre : " <b> 2.4 </b> "
+pre : " <b> 2.5 </b> "
 ---
 1. Truy cập vào  [this deep link to create an IAM role with Administrator access](https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess&roleName=eksworkshop-admin).
 2. Xác nhận rằng **AWS service** và **EC2** đã được chọn, sau đó nhấn **Next: Permissions** để xem quyền.

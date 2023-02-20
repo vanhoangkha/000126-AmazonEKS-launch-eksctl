@@ -6,4 +6,4 @@ chapter : false
 pre : " <b> 1.1.3 </b> "
 ---
 
-![eks](/images/Introduction/eks-architecture.svg)
+![eks](/images/Introduction/eks-architecture1.svg)

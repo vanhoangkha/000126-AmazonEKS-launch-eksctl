@@ -1,9 +1,9 @@
 ---
 title : "Cập nhật cài đặt IAM cho workspace của bạn"
 ddate :  "`r Sys.Date()`" 
-weight : 6
+weight : 7
 chapter : false
-pre : " <b> 2.6 <b> "
+pre : " <b> 2.7 <b> "
 ---
 
 {{% notice info %}}
@@ -17,6 +17,9 @@ aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-ac
 rm -vf ${HOME}/.aws/credentials
 
 ```
+
+![workspaceiam](/images/prerequisites/rmvcredentials.png?width=90pc)
+
 Chúng ta nên cấu hình cli aws của chúng ta với region mặc định hiện tại của chúng ta.
 
 
@@ -30,11 +33,16 @@ export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/doc
 export AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
 ```
 
+![workspaceiam](/images/prerequisites/export.png?width=90pc)
+
+
 Kiểm tra AWS_REGION có được set trong region mong muốn
 
 ```
 test -n "$AWS_REGION" && echo AWS_REGION is "$AWS_REGION" || echo AWS_REGION is not set
 ```
+
+![workspaceiam](/images/prerequisites/checkregion.png?width=90pc)
 
 Lưu tất cả vào bash_profile
 
@@ -46,6 +54,8 @@ aws configure set default.region ${AWS_REGION}
 aws configure get default.region
 ```
 
+![workspaceiam](/images/prerequisites/save.png?width=90pc)
+
 ## Xác nhận vai trò IAM
 
 Sử dụng [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) công cụ dòng lệnh CLI để xác nhận rằng IDE Cloud9 đang sử dụng đúng IAM role.
@@ -53,6 +63,7 @@ Sử dụng [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference
 ```
 aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
 ```
+![workspaceiam](/images/prerequisites/validate.png?width=90pc)
 
 Nếu IAM role không hợp lệ, **ĐỪNG TIẾP TỤC**. Quay lại và xác nhận các bước trên trang này.
 

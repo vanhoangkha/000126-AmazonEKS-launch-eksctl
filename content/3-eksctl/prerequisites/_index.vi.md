@@ -14,11 +14,14 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv -v /tmp/eksctl /usr/local/bin
 ```
 
+![createkmskey](/images/prerequisites/eksctlbinary.png?width=90pc)
+
 Xác nhận lệnh eksctl hoạt động:
 
 ```
 eksctl version
 ```
+![createkmskey](/images/prerequisites/version.png?width=90pc)
 
 Enable eksctl bash-completion
 
@@ -28,4 +31,4 @@ eksctl completion bash >> ~/.bash_completion
 . ~/.bash_completion
 
 ```
-
+![createkmskey](/images/prerequisites/enable-eksctl.png?width=90pc)

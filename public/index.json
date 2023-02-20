@@ -21,11 +21,32 @@
 	"content": "Login to AWS Workshop Portal This workshop creates an AWS account and a Cloud9 environment. You will need the Participant Hash provided upon entry, and your email address to track your unique session.\nConnect to the portal by clicking the button or browsing to https://dashboard.eventengine.run/. The following screen shows up.\nEnter the provided hash in the text box. The button on the bottom right corner changes to Accept Terms \u0026amp; Login. Click on that button to continue.\nClick on AWS Console on dashboard.\nTake the defaults and click on Open AWS Console. This will open AWS Console in a new browser tab.\nOnce you have completed the step above, you can head straight to Create a Workspace\n"
 },
 {
+	"uri": "/4-beginner/healthchecks/livenessprobe/",
+	"title": "Configure Livenesss Probe",
+	"tags": [],
+	"description": "",
+	"content": "Configure the Probe Use the command below to create a directory\nmkdir -p ~/environment/healthchecks Run the following code block to populate the manifest file ~/environment/healthchecks/liveness-app.yaml. In the configuration file, the livenessProbe field determines how kubelet should check the container in order to consider whether it is healthy or not. kubelet uses the periodSeconds field to do frequent check on the Container. In this case, kubelet checks the liveness probe every 5 seconds. The initialDelaySeconds field is used to tell kubelet that it should wait for 5 seconds before doing the first probe. To perform a probe, kubelet sends a HTTP GET request to the server hosting this pod and if the handler for the servers /health returns a success code, then the container is considered healthy. If the handler returns a failure code, the kubelet kills the container and restarts it.\ncat \u0026lt;\u0026lt;EoF \u0026gt; ~/environment/healthchecks/liveness-app.yaml\rapiVersion: v1\rkind: Pod\rmetadata:\rname: liveness-app\rspec:\rcontainers:\r- name: liveness\rimage: brentley/ecsdemo-nodejs\rlivenessProbe:\rhttpGet:\rpath: /health\rport: 3000\rinitialDelaySeconds: 5\rperiodSeconds: 5\rEoF Let’s create the pod using the manifest:\nkubectl apply -f ~/environment/healthchecks/liveness-app.yaml The above command creates a pod with liveness probe.\nkubectl get pod liveness-app The output looks like below. Notice the RESTARTS\nNAME READY STATUS RESTARTS AGE\rliveness-app 1/1 Running 0 11s The kubectl describe command will show an event history which will show any probe failures or restarts.\nkubectl describe pod liveness-app Events:\rType Reason Age From Message\r---- ------ ---- ---- -------\rNormal Scheduled 38s default-scheduler Successfully assigned default/liveness-app to ip-192-168-18-63.ec2.internal\rNormal Pulling 37s kubelet Pulling image \u0026#34;brentley/ecsdemo-nodejs\u0026#34;\rNormal Pulled 37s kubelet Successfully pulled image \u0026#34;brentley/ecsdemo-nodejs\u0026#34; in 108.556215ms\rNormal Created 37s kubelet Created container liveness\rNormal Started 37s kubelet Started container liveness Introduce a Failure We will run the next command to send a SIGUSR1 signal to the nodejs application. By issuing this command we will send a kill signal to the application process in the docker runtime.\nkubectl exec -it liveness-app -- /bin/kill -s SIGUSR1 1 Describe the pod after waiting for 15-20 seconds and you will notice the kubelet actions of killing the container and restarting it.\nEvents:\rType Reason Age From Message\r---- ------ ---- ---- -------\rNormal Scheduled 72s default-scheduler Successfully assigned default/liveness-app to ip-192-168-18-63.ec2.internal\rNormal Pulled 71s kubelet Successfully pulled image \u0026#34;brentley/ecsdemo-nodejs\u0026#34; in 100.615806ms\rWarning Unhealthy 37s (x3 over 47s) kubelet Liveness probe failed: Get http://192.168.13.176:3000/health: context deadline exceeded (Client.Timeout exceeded while awaiting headers)\rNormal Killing 37s kubelet Container liveness failed liveness probe, will be restarted\rNormal Pulling 6s (x2 over 71s) kubelet Pulling image \u0026#34;brentley/ecsdemo-nodejs\u0026#34;\rNormal Created 6s (x2 over 71s) kubelet Created container liveness\rNormal Started 6s (x2 over 71s) kubelet Started container liveness\rNormal Pulled 6s kubelet Successfully pulled image \u0026#34;brentley/ecsdemo-nodejs\u0026#34; in 118.19123ms When the nodejs application entered a debug mode with SIGUSR1 signal, it did not respond to the health check pings and kubelet killed the container. The container was subject to the default restart policy.\nkubectl get pod liveness-app The output looks like below:\nNAME READY STATUS RESTARTS AGE\rliveness-app 1/1 Running 1 12m How can we check the status of the container health checks?\nkubectl logs liveness-app You can also use kubectl logs to retrieve logs from a previous instantiation of a container with --previous flag, in case the container has crashed\nkubectl logs liveness-app --previous "
+},
+{
+	"uri": "/4-beginner/helm/helm_micro/create_chart/",
+	"title": "Create a Chart",
+	"tags": [],
+	"description": "",
+	"content": "Helm charts have a structure similar to:\n/eksdemo\r├── charts/\r├── Chart.yaml\r├── templates/\r│ ├── deployment.yaml\r│ ├── _helpers.tpl\r│ ├── hpa.yaml\r│ ├── ingress.yaml\r│ ├── NOTES.txt\r│ ├── serviceaccount.yaml\r│ ├── service.yaml\r│ └── tests\r│ └── test-connection.yaml\r└── values.yaml We’ll follow this template, and create a new chart called eksdemo with the following commands:\ncd ~/environment\rhelm create eksdemo\rcd eksdemo "
+},
+{
 	"uri": "/2-prerequisites/self_paced/account/",
 	"title": "Create an AWS account",
 	"tags": [],
 	"description": "",
 	"content": "\rYour account must have the ability to create new IAM roles and scope other IAM permissions.\n\r  If you don’t already have an AWS account with Administrator access: create one now by clicking here\n  Once you have an AWS account, ensure you are following the remaining workshop steps as an IAM user with administrator access to the AWS account: Create a new IAM user to use for the workshop\n  Enter the user details:\n  Attach the AdministratorAccess IAM Policy:  Click to create the new user:  Take note of the login URL and save:  "
+},
+{
+	"uri": "/4-beginner/deploy/deploynodejs/",
+	"title": "Deploy NodeJS BackEnd API",
+	"tags": [],
+	"description": "",
+	"content": "Let’s bring up the NodeJS Backend API!\nCopy/Paste the following commands into your Cloud9 workspace:\ncd ~/environment/ecsdemo-nodejs\rkubectl apply -f kubernetes/deployment.yaml\rkubectl apply -f kubernetes/service.yaml We can watch the progress by looking at the deployment status:\nkubectl get deployment ecsdemo-nodejs "
 },
 {
 	"uri": "/4-beginner/dashboard/",
@@ -42,11 +63,18 @@
 	"content": "The official Kubernetes dashboard is not deployed by default, but there are instructions in the official documentation\nWe can deploy the dashboard with the following command:\nexport DASHBOARD_VERSION=\u0026#34;v2.6.0\u0026#34;\rkubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHBOARD_VERSION}/aio/deploy/recommended.yaml Since this is deployed to our private cluster, we need to access it via a proxy. kube-proxy is available to proxy our requests to the dashboard service. In your workspace, run the following command:\nkubectl proxy --port=8080 --address=0.0.0.0 --disable-filter=true \u0026amp; This will start the proxy, listen on port 8080, listen on all interfaces, and will disable the filtering of non-localhost requests.\nThis command will continue to run in the background of the current terminal’s session.\n"
 },
 {
-	"uri": "/1-introduce/",
-	"title": "Introduction to Kubernetes",
+	"uri": "/4-beginner/helm/helm_introduction/install/",
+	"title": "Install Helm CLI",
 	"tags": [],
 	"description": "",
-	"content": "Welcome to the Amazon EKS Workshop!\nThe intent of this workshop is to educate users about the features of Amazon EKS.\nBackground in EKS, Kubernetes, Docker, and container workflows are not required, but they are recommended.\nThis chapter will introduce you to the basic workings of Kubernetes, laying the foundation for the hands-on portion of the workshop.\nSpecifically, we will walk you through the following topics:\n Kubernetes (k8s) Basics Kubernetes Architecture Amazon EKS  "
+	"content": "Install the Helm CLI Before we can get started configuring Helm, we’ll need to first install the command line tools that you will interact with. To do this, run the following:\ncurl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash We can verify the version\nhelm version --short Let’s configure our first Chart repository. Chart repositories are similar to APT or yum repositories that you might be familiar with on Linux, or Taps for Homebrew on macOS.\nAdd the stable repository so we have something to start with:\nhelm repo add stable https://charts.helm.sh/stable Once this is installed, we will be able to list the charts you can install:\nhelm search repo stable Finally, let’s configure Bash completion for the helm command:\nhelm completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion\rsource \u0026lt;(helm completion bash) "
+},
+{
+	"uri": "/4-beginner/helm/helm_introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Helm is a package manager and application management tool for Kubernetes that packages multiple Kubernetes resources into a single logical deployment unit called a Chart.\nHelm helps you to:\n Achieve a simple (one command) and repeatable deployment Manage application dependency, using specific versions of other application and services Manage multiple deployment configurations: test, staging, production and others Execute post/pre deployment jobs during application deployment Update/rollback and test application deployments  "
 },
 {
 	"uri": "/",
@@ -68,6 +96,13 @@
 	"tags": [],
 	"description": "",
 	"content": "For this module, we need to download the eksctl binary:\ncurl --silent --location \u0026#34;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz\u0026#34; | tar xz -C /tmp\rsudo mv -v /tmp/eksctl /usr/local/bin Confirm the eksctl command works:\neksctl version Enable eksctl bash-completion\neksctl completion bash \u0026gt;\u0026gt; ~/.bash_completion\r. /etc/profile.d/bash_completion.sh\r. ~/.bash_completion "
+},
+{
+	"uri": "/4-beginner/helm/helm_nginx/updatecharts/",
+	"title": "Update the Chart Repository",
+	"tags": [],
+	"description": "",
+	"content": "Helm uses a packaging format called Charts. A Chart is a collection of files and templates that describes Kubernetes resources.\nCharts can be simple, describing something like a standalone web server (which is what we are going to create), but they can also be more complex, for example, a chart that represents a full web application stack, including web servers, databases, proxies, etc.\nInstead of installing Kubernetes resources manually via kubectl, one can use Helm to install pre-defined Charts faster, with less chance of typos or other operator errors.\nChart repositories change frequently due to updates and new additions. To keep Helm’s local list updated with all these changes, we need to occasionally run the repository update command.\nTo update Helm’s local list of Charts, run:\n# first, add the default repository, then update\rhelm repo add stable https://charts.helm.sh/stable\rhelm repo update And you should see something similar to:\nHang tight while we grab the latest from your chart repositories...\r...Successfully got an update from the \u0026#34;stable\u0026#34; chart repository\rUpdate Complete. ⎈ Happy Helming!⎈ Next, we’ll search for the nginx web server Chart.\n"
 },
 {
 	"uri": "/1-introduce/amazon_eks/eks_control_plane/",
@@ -98,6 +133,13 @@
 	"content": "Now we can access the Kubernetes Dashboard\nIn your Cloud9 environment, click Tools / Preview / Preview Running Application Scroll to the end of the URL and append:\n/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ The Cloud9 Preview browser doesn’t appear to support the token authentication, so once you have the login screen in the cloud9 preview browser tab, press the Pop Out button to open the login screen in a regular browser tab, like below:\nOpen a New Terminal Tab and enter\naws eks get-token --cluster-name eksworkshop-eksctl | jq -r \u0026#39;.status.token\u0026#39; Copy the output of this command and then click the radio button next to Token then in the text field below paste the output from the last command.\nThen press Sign In\n"
 },
 {
+	"uri": "/4-beginner/healthchecks/readinessprobe/",
+	"title": "Configure Readiness Probe",
+	"tags": [],
+	"description": "",
+	"content": "Configure the Probe Run the following code block to populate ~/environment/healthchecks/readiness-deployment.yaml. The readinessProbe definition explains how a linux command can be configured as healthcheck. We create an empty file /tmp/healthy to configure readiness probe and use the same to understand how kubelet helps to update a deployment with only healthy pods.\ncat \u0026lt;\u0026lt;EoF \u0026gt; ~/environment/healthchecks/readiness-deployment.yaml\rapiVersion: apps/v1\rkind: Deployment\rmetadata:\rname: readiness-deployment\rspec:\rreplicas: 3\rselector:\rmatchLabels:\rapp: readiness-deployment\rtemplate:\rmetadata:\rlabels:\rapp: readiness-deployment\rspec:\rcontainers:\r- name: readiness-deployment\rimage: alpine\rcommand: [\u0026#34;sh\u0026#34;, \u0026#34;-c\u0026#34;, \u0026#34;touch /tmp/healthy \u0026amp;\u0026amp; sleep 86400\u0026#34;]\rreadinessProbe:\rexec:\rcommand:\r- cat\r- /tmp/healthy\rinitialDelaySeconds: 5\rperiodSeconds: 3\rEoF We will now create a deployment to test readiness probe:\nkubectl apply -f ~/environment/healthchecks/readiness-deployment.yaml The above command creates a deployment with 3 replicas and readiness probe as described in the beginning.\nkubectl get pods -l app=readiness-deployment The output looks similar to below:\nNAME READY STATUS RESTARTS AGE\rreadiness-deployment-7869b5d679-922mx 1/1 Running 0 31s\rreadiness-deployment-7869b5d679-vd55d 1/1 Running 0 31s\rreadiness-deployment-7869b5d679-vxb6g 1/1 Running 0 31s Let us also confirm that all the replicas are available to serve traffic when a service is pointed to this deployment.\nkubectl describe deployment readiness-deployment | grep Replicas: The output looks like below:\nReplicas: 3 desired | 3 updated | 3 total | 3 available | 0 unavailable Introduce a Failure Pick one of the pods from above 3 and issue a command as below to delete the /tmp/healthy file which makes the readiness probe fail.\nkubectl exec -it \u0026lt;YOUR-READINESS-POD-NAME\u0026gt; -- rm /tmp/healthy readiness-deployment-548975dcc5-ggdtc was picked in our example cluster. The /tmp/healthy file was deleted. This file must be present for the readiness check to pass. Below is the status after issuing the command.\nkubectl get pods -l app=readiness-deployment The output looks similar to below:\nNAME READY STATUS RESTARTS AGE\rreadiness-deployment-7869b5d679-922mx 0/1 Running 0 4m\rreadiness-deployment-7869b5d679-vd55d 1/1 Running 0 4m\rreadiness-deployment-7869b5d679-vxb6g 1/1 Running 0 4m Traffic will not be routed to the first pod in the above deployment. The ready column confirms that the readiness probe for this pod did not pass and hence was marked as not ready. We will now check for the replicas that are available to serve traffic when a service is pointed to this deployment.\nkubectl describe deployment readiness-deployment | grep Replicas: The output looks like below:\nReplicas: 3 desired | 3 updated | 3 total | 2 available | 1 unavailable When the readiness probe for a pod fails, the endpoints controller removes the pod from list of endpoints of all services that match the pod.\n"
+},
+{
 	"uri": "/1-introduce/kubernetes_architecture/architecture_control/",
 	"title": "Control Plane",
 	"tags": [],
@@ -105,11 +147,32 @@
 	"content": "  One or More API Servers: Entry point for REST / kubectl\n  etcd: Distributed key/value store\n  Controller-manager: Always evaluating current vs desired state\n  Scheduler: Schedules pods to worker nodes\n  Check out the official Kubernetes documentation for a more in-depth explanation of control plane components.\n"
 },
 {
+	"uri": "/4-beginner/helm/helm_micro/customize/",
+	"title": "Customize Defaults",
+	"tags": [],
+	"description": "",
+	"content": "If you look in the newly created eksdemo directory, you’ll see several files and directories.\nThe table below outlines the purpose of each component in the Helm chart structure.\nThe following steps should be completed separately for frontend.yaml, crystal.yaml, and nodejs.yaml.\n\r)\"   File or Directory Description     charts/ Sub-charts that the chart depends on   Chart.yaml Information about your chart   values.yaml The default values for your template   templates/ The template files   templates/deployment.yaml Basic manifest for creating Kubernetes Deployment objects   templates/_helpers.tpl Used to define Go template helpers   templates/hpa.yaml Basic manifest for creating Kubernetes Horizontal Pod Autoscaler objects   templates/ingress.yaml Basic manifest for creating Kubernetes Ingress objects   templates/NOTES.txt A plain text file to give users detailed information about how to use the newly installed chart   templates/templates/serviceaccount.yaml Basic manifest for creating Kubernetes ServiceAccount objects   templates/service.yaml Basic manifest for creating Kubernetes Service objects   tests/ Directory of Test files   tests/test-connections.yaml Tests that validate that your chart works as expected when it is installed    rm -rf ~/environment/eksdemo/templates/\rrm ~/environment/eksdemo/Chart.yaml\rrm ~/environment/eksdemo/values.yaml Run the following code block to create a new Chart.yaml file which will describe the chart\ncat \u0026lt;\u0026lt;EoF \u0026gt; ~/environment/eksdemo/Chart.yaml\rapiVersion: v2\rname: eksdemo\rdescription: A Helm chart for EKS Workshop Microservices application\rversion: 0.1.0\rappVersion: 1.0\rEoF Next we’ll copy the manifest files for each of our microservices into the templates directory as servicename.yaml\n#create subfolders for each template type\rmkdir -p ~/environment/eksdemo/templates/deployment\rmkdir -p ~/environment/eksdemo/templates/service\r# Copy and rename frontend manifests\rcp ~/environment/ecsdemo-frontend/kubernetes/deployment.yaml ~/environment/eksdemo/templates/deployment/frontend.yaml\rcp ~/environment/ecsdemo-frontend/kubernetes/service.yaml ~/environment/eksdemo/templates/service/frontend.yaml\r# Copy and rename crystal manifests\rcp ~/environment/ecsdemo-crystal/kubernetes/deployment.yaml ~/environment/eksdemo/templates/deployment/crystal.yaml\rcp ~/environment/ecsdemo-crystal/kubernetes/service.yaml ~/environment/eksdemo/templates/service/crystal.yaml\r# Copy and rename nodejs manifests\rcp ~/environment/ecsdemo-nodejs/kubernetes/deployment.yaml ~/environment/eksdemo/templates/deployment/nodejs.yaml\rcp ~/environment/ecsdemo-nodejs/kubernetes/service.yaml ~/environment/eksdemo/templates/service/nodejs.yaml All files in the templates directory are sent through the template engine. These are currently plain YAML files that would be sent to Kubernetes as-is.\nReplace hard-coded values with template directives Let’s replace some of the values with template directives to enable more customization by removing hard-coded values.\nOpen ~/environment/eksdemo/templates/deployment/frontend.yaml in your Cloud9 editor.\nUnder spec, find replicas: 1 and replace with the following:\nreplicas: {{ .Values.replicas }} Create a values.yaml file with our template defaults Run the following code block to populate our template directives with default values.\ncat \u0026lt;\u0026lt;EoF \u0026gt; ~/environment/eksdemo/values.yaml\r# Default values for eksdemo.\r# This is a YAML-formatted file.\r# Declare variables to be passed into your templates.\r# Release-wide Values\rreplicas: 3\rversion: \u0026#39;latest\u0026#39;\r# Service Specific Values\rnodejs:\rimage: brentley/ecsdemo-nodejs\rcrystal:\rimage: brentley/ecsdemo-crystal\rfrontend:\rimage: brentley/ecsdemo-frontend\rEoF "
+},
+{
+	"uri": "/4-beginner/deploy/deploycrystal/",
+	"title": "Deploy Crystal BackEnd API",
+	"tags": [],
+	"description": "",
+	"content": "Let’s bring up the Crystal Backend API!\nCopy/Paste the following commands into your Cloud9 workspace:\ncd ~/environment/ecsdemo-crystal\rkubectl apply -f kubernetes/deployment.yaml\rkubectl apply -f kubernetes/service.yaml We can watch the progress by looking at the deployment status:\nkubectl get deployment ecsdemo-crystal "
+},
+{
 	"uri": "/1-introduce/amazon_eks/eks_customers/",
 	"title": "EKS Cluster Creation Workflow",
 	"tags": [],
 	"description": "",
 	"content": ""
+},
+{
+	"uri": "/1-introduce/",
+	"title": "Introduction to Kubernetes",
+	"tags": [],
+	"description": "",
+	"content": "Welcome to the Amazon EKS Workshop!\nThe intent of this workshop is to educate users about the features of Amazon EKS.\nBackground in EKS, Kubernetes, Docker, and container workflows are not required, but they are recommended.\nThis chapter will introduce you to the basic workings of Kubernetes, laying the foundation for the hands-on portion of the workshop.\nSpecifically, we will walk you through the following topics:\n Kubernetes (k8s) Basics Kubernetes Architecture Amazon EKS  "
 },
 {
 	"uri": "/1-introduce/kubernetes_architecture/",
@@ -130,14 +193,21 @@
 	"title": "Launch EKS",
 	"tags": [],
 	"description": "",
-	"content": "\rDO NOT PROCEED with this step unless you have validated the IAM role in use by the Cloud9 IDE. You will not be able to run the necessary kubectl commands in the later modules unless the EKS cluster is built using the IAM role.\n\rCreate an EKS cluster eksctl version must be 0.58.0 or above to deploy EKS 1.21, click here to get the latest version.\n\rCreate an eksctl deployment file (eksworkshop.yaml) use in creating your cluster using the following syntax:\ncat \u0026lt;\u0026lt; EOF \u0026gt; eksworkshop.yaml\r---\rapiVersion: eksctl.io/v1alpha5\rkind: ClusterConfig\rmetadata:\rname: eksworkshop-eksctl\rregion: ${AWS_REGION}\rversion: \u0026#34;1.21\u0026#34;\ravailabilityZones: [\u0026#34;${AZS[0]}\u0026#34;, \u0026#34;${AZS[1]}\u0026#34;, \u0026#34;${AZS[2]}\u0026#34;]\rmanagedNodeGroups:\r- name: nodegroup\rdesiredCapacity: 3\rinstanceType: t3.small\rssh:\renableSsm: true\r# To enable all of the control plane logs, uncomment below:\r# cloudWatch:\r# clusterLogging:\r# enableTypes: [\u0026#34;*\u0026#34;]\rsecretsEncryption:\rkeyARN: ${MASTER_ARN}\rEOF Next, use the file you created as the input for the eksctl cluster creation.\nWe are deliberatly launching at least one Kubernetes version behind the latest available. Please review Amazon EKS Kubernetes versions to determine what supported versions are currently available. This allows you to perform the cluster upgrade lab.\n\reksctl create cluster -f eksworkshop.yaml \rLaunching EKS and all the dependencies will take approximately 15 minutes\n\r"
+	"content": "\rDO NOT PROCEED with this step unless you have validated the IAM role in use by the Cloud9 IDE. You will not be able to run the necessary kubectl commands in the later modules unless the EKS cluster is built using the IAM role.\n\rCreate an EKS cluster eksctl version must be 0.58.0 or above to deploy EKS 1.21, click here to get the latest version.\n\rCreate an eksctl deployment file (eksworkshop.yaml) use in creating your cluster using the following syntax:\ncat \u0026lt;\u0026lt; EOF \u0026gt; eksworkshop.yaml\r---\rapiVersion: eksctl.io/v1alpha5\rkind: ClusterConfig\rmetadata:\rname: eksworkshop-eksctl\rregion: ${AWS_REGION}\rversion: \u0026#34;1.21\u0026#34;\ravailabilityZones: [\u0026#34;${AZS[0]}\u0026#34;, \u0026#34;${AZS[1]}\u0026#34;, \u0026#34;${AZS[2]}\u0026#34;]\rmanagedNodeGroups:\r- name: nodegroup\rdesiredCapacity: 3\rinstanceType: t3.small\rssh:\renableSsm: true\r# To enable all of the control plane logs, uncomment below:\r# cloudWatch:\r# clusterLogging:\r# enableTypes: [\u0026#34;*\u0026#34;]\rsecretsEncryption:\rkeyARN: ${MASTER_ARN}\rEOF Next, use the file you created as the input for the eksctl cluster creation.\nWe are deliberatly launching at least one Kubernetes version behind the latest available. Please review Amazon EKS Kubernetes versions to determine what supported versions are currently available. This allows you to perform the cluster upgrade lab.\n\reksctl create cluster -f eksworkshop.yaml Launching EKS and all the dependencies will take approximately 15 minutes\n\r"
 },
 {
-	"uri": "/2-prerequisites/",
-	"title": "Start the workshop...",
+	"uri": "/4-beginner/helm/helm_nginx/searchchart/",
+	"title": "Search Chart Repositories",
 	"tags": [],
 	"description": "",
-	"content": "GETTING STARTED To start the workshop, follow one of the following depending on whether you are…\n…running the workshop on your own (in your own account), or …attending an AWS hosted event (using AWS provided hashes)\nOnce you have completed with either setup, continue with Create a Workspace\n"
+	"content": "Now that our repository Chart list has been updated, we can search for Charts.\nTo list all Charts:\nhelm search repo That should output something similar to:\nNAME CHART VERSION APP VERSION DESCRIPTION\rstable/acs-engine-autoscaler 2.2.2 2.1.1 Scales worker...\rstable/aerospike 0.3.2 v4.5.0.5 A Helm chart...\r... You can see from the output that it dumped the list of all Charts we have added. In some cases that may be useful, but an even more useful search would involve a keyword argument. So next, we’ll search just for nginx:\nhelm search repo nginx That results in:\nNAME CHART VERSION APP VERSION DESCRIPTION\rstable/nginx-ingress 1.41.3 v0.34.1 DEPRECATED! An nginx Ingress controller ...\rstable/nginx-ldapauth-proxy 0.1.6 1.13.5 DEPRECATED - nginx proxy with ldapauth ...\rstable/nginx-lego 0.3.1 Chart for...\rstable/gcloud-endpoints 0.1.2 1 DEPRECATED Develop...\r... This new list of Charts are specific to nginx, because we passed the nginx argument to the helm search repo command.\nFurther information on the command can be found here.\n"
+},
+{
+	"uri": "/4-beginner/helm/helm_nginx/addbitnamirepo/",
+	"title": "Add the Bitnami Repository",
+	"tags": [],
+	"description": "",
+	"content": "In the last slide, we saw that nginx offers many different products via the default Helm Chart repository, but the nginx standalone web server is not one of them.\nAfter a quick web search, we discover that there is a Chart for the nginx standalone web server available via the Bitnami Chart repository.\nTo add the Bitnami Chart repo to our local list of searchable charts:\nhelm repo add bitnami https://charts.bitnami.com/bitnami Once that completes, we can search all Bitnami Charts:\nhelm search repo bitnami Which results in:\nNAME CHART VERSION APP VERSION DESCRIPTION\rbitnami/bitnami-common 0.0.9 0.0.9 DEPRECATED Chart with custom templates used in ...\rbitnami/airflow 10.2.5 2.1.2 Apache Airflow is a platform to programmaticall...\rbitnami/apache 8.5.8 2.4.48 Chart for Apache HTTP Server ... Search once again for nginx\nhelm search repo nginx Now we are seeing more nginx options, across both repositories:\nNAME CHART VERSION APP VERSION DESCRIPTION\rbitnami/nginx 9.3.7 1.21.1 Chart for the nginx server bitnami/nginx-ingress-controller 7.6.16 0.48.1 Chart for the nginx Ingress controller stable/nginx-ingress 1.41.3 v0.34.1 DEPRECATED! An nginx Ingress controller that us... Or even search the Bitnami repo, just for nginx:\nhelm search repo bitnami/nginx Which narrows it down to nginx on Bitnami:\nNAME CHART VERSION APP VERSION DESCRIPTION\rbitnami/nginx 9.3.7 1.21.1 Chart for the nginx server bitnami/nginx-ingress-controller 7.6.16 0.48.1 Chart for the nginx Ingress controller In both of those last two searches, we see\nbitnami/nginx as a search result. That’s the one we’re looking for, so let’s use Helm to install it to the EKS cluster.\n"
 },
 {
 	"uri": "/4-beginner/dashboard/cleanup/",
@@ -145,6 +215,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Stop the proxy and delete the dashboard deployment\n# kill proxy\rpkill -f \u0026#39;kubectl proxy --port=8080\u0026#39;\r# delete dashboard\rkubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHBOARD_VERSION}/aio/deploy/recommended.yaml\runset DASHBOARD_VERSION "
+},
+{
+	"uri": "/4-beginner/healthchecks/cleanup/",
+	"title": "Cleanup",
+	"tags": [],
+	"description": "",
+	"content": "Our Liveness Probe example used HTTP request and Readiness Probe executed a command to check health of a pod. Same can be accomplished using a TCP request as described in the documentation.\nkubectl delete -f ~/environment/healthchecks/liveness-app.yaml\rkubectl delete -f ~/environment/healthchecks/readiness-deployment.yaml "
 },
 {
 	"uri": "/2-prerequisites/workspace/",
@@ -159,6 +236,13 @@
 	"tags": [],
 	"description": "",
 	"content": "  Made up of worker nodes\n  kubelet: Acts as a conduit between the API server and the node\n  kube-proxy: Manages IP translation and routing\n  Check out the official Kubernetes documentation for a more in-depth explanation of data plane components.\n"
+},
+{
+	"uri": "/4-beginner/helm/helm_micro/deploy/",
+	"title": "Deploy the eksdemo Chart",
+	"tags": [],
+	"description": "",
+	"content": "Use the dry-run flag to test our templates To test the syntax and validity of the Chart without actually deploying it, we’ll use the --dry-run flag.\nThe following command will build and output the rendered templates without installing the Chart:\nhelm install --debug --dry-run workshop ~/environment/eksdemo Confirm that the values created by the template look correct.\nDeploy the chart Now that we have tested our template, let’s install it.\nhelm install workshop ~/environment/eksdemo Similar to what we saw previously in the nginx Helm Chart example, an output of the command will contain the information about the deployment status, revision, namespace, etc, similar to:\nNAME: workshop\rLAST DEPLOYED: Sat Jul 17 08:47:32 2021\rNAMESPACE: default\rSTATUS: deployed\rREVISION: 1\rTEST SUITE: None In order to review the underlying services, pods and deployments, run:\nkubectl get svc,po,deploy "
 },
 {
 	"uri": "/1-introduce/amazon_eks/eks_high_architecture/",
@@ -182,11 +266,18 @@
 	"content": "Kubernetes objects are entities that are used to represent the state of the cluster.\nAn object is a “record of intent” – once created, the cluster does its best to ensure it exists as defined. This is known as the cluster’s “desired state.”\nKubernetes is always working to make an object’s “current state” equal to the object’s “desired state.” A desired state can describe:\n What pods (containers) are running, and on which nodes IP endpoints that map to a logical group of containers How many replicas of a container are running And much more…  Let’s explain these k8s objects in a bit more detail..\n"
 },
 {
-	"uri": "/3-eksctl/",
-	"title": "Launch using eksctl",
+	"uri": "/4-beginner/deploy/servicetype/",
+	"title": "Let&#39;s check Service Types",
 	"tags": [],
 	"description": "",
-	"content": "eksctl is a tool jointly developed by AWS and Weaveworks that automates much of the experience of creating EKS clusters.\nIn this module, we will use eksctl to launch and configure our EKS cluster and nodes.\n"
+	"content": "Before we bring up the frontend service, let’s take a look at the service types we are using: This is ~/environment/ecsdemo-frontend/kubernetes/service.yaml for our frontend service:\napiVersion: v1\rkind: Service\rmetadata:\rname: ecsdemo-frontend\rspec:\rselector:\rapp: ecsdemo-frontend\rtype: LoadBalancer\rports:\r- protocol: TCP\rport: 80\rtargetPort: 3000 Notice type: LoadBalancer: This will configure an ELB to handle incoming traffic to this service.\nCompare this to ~/environment/ecsdemo-nodejs/kubernetes/service.yaml for one of our backend services:\napiVersion: v1\rkind: Service\rmetadata:\rname: ecsdemo-nodejs\rspec:\rselector:\rapp: ecsdemo-nodejs\rports:\r- protocol: TCP\rport: 80\rtargetPort: 3000 Notice there is no specific service type described. When we check the kubernetes documentation we find that the default type is ClusterIP. This Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster.\n"
+},
+{
+	"uri": "/2-prerequisites/",
+	"title": "Start the workshop...",
+	"tags": [],
+	"description": "",
+	"content": "GETTING STARTED To start the workshop, follow one of the following depending on whether you are…\n…running the workshop on your own (in your own account), or …attending an AWS hosted event (using AWS provided hashes)\nOnce you have completed with either setup, continue with Create a Workspace\n"
 },
 {
 	"uri": "/3-eksctl/test/",
@@ -196,13 +287,6 @@
 	"content": "Test the cluster: Confirm your nodes:\nkubectl get nodes # if we see our 3 nodes, we know we have authenticated correctly Update the kubeconfig file to interact with you cluster: aws eks update-kubeconfig --name eksworkshop-eksctl --region ${AWS_REGION} Export the Worker Role Name for use throughout the workshop: STACK_NAME=$(eksctl get nodegroup --cluster eksworkshop-eksctl -o json | jq -r \u0026#39;.[].StackName\u0026#39;)\rROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r \u0026#39;.StackResources[] | select(.ResourceType==\u0026#34;AWS::IAM::Role\u0026#34;) | .PhysicalResourceId\u0026#39;)\recho \u0026#34;export ROLE_NAME=${ROLE_NAME}\u0026#34; | tee -a ~/.bash_profile Congratulations! You now have a fully working Amazon EKS Cluster that is ready to use! Before you move on to any other labs, make sure to complete the steps on the next page to update the EKS Console Credentials.\n"
 },
 {
-	"uri": "/4-beginner/",
-	"title": "Beginner",
-	"tags": [],
-	"description": "",
-	"content": "In this section, we will learn the basics of a Kubernetes cluster, how to configure and manage the cluster, and how to deploy and manage applications on Kubernetes. We will cover topics such as:\n Installing and configuring a Kubernetes cluster Understanding the key components of a Kubernetes cluster such as nodes, pods, and services Using kubectl to manage and deploy objects within the cluster Creating and managing applications on the cluster using YAML and manifests  This is a great opportunity to build a strong foundation for your technical development in the Kubernetes field.\n"
-},
-{
 	"uri": "/3-eksctl/console/",
 	"title": "Console Credentials",
 	"tags": [],
@@ -210,11 +294,18 @@
 	"content": "This step is optional, as nearly all of the workshop content is CLI-driven. But, if you’d like full access to your workshop cluster in the EKS console this step is recommended.\nThe EKS console allows you to see not only the configuration aspects of your cluster, but also to view Kubernetes cluster objects such as Deployments, Pods, and Nodes. For this type of access, the console IAM User or Role needs to be granted permission within the cluster.\nBy default, the credentials used to create the cluster are automatically granted these permissions. Following along in the workshop, you’ve created a cluster using temporary IAM credentials from within Cloud9. This means that you’ll need to add your AWS Console credentials to the cluster\nImport your EKS Console credentials to your new cluster: IAM Users and Roles are bound to an EKS Kubernetes cluster via a ConfigMap named aws-auth. We can use eksctl to do this with one command.\nYou’ll need to determine the correct credential to add for your AWS Console access. If you know this already, you can skip ahead to the eksctl create iamidentitymapping step below.\nIf you’ve built your cluster from Cloud9 as part of this tutorial, invoke the following within your environment to determine your IAM Role or User ARN.\nc9builder=$(aws cloud9 describe-environment-memberships --environment-id=$C9_PID | jq -r \u0026#39;.memberships[].userArn\u0026#39;)\rif echo ${c9builder} | grep -q user; then\rrolearn=${c9builder}\recho Role ARN: ${rolearn}\relif echo ${c9builder} | grep -q assumed-role; then\rassumedrolename=$(echo ${c9builder} | awk -F/ \u0026#39;{print $(NF-1)}\u0026#39;)\rrolearn=$(aws iam get-role --role-name ${assumedrolename} --query Role.Arn --output text) echo Role ARN: ${rolearn}\rfi With your ARN in hand, you can issue the command to create the identity mapping within the cluster.\neksctl create iamidentitymapping --cluster eksworkshop-eksctl --arn ${rolearn} --group system:masters --username admin Note that permissions can be restricted and granular but as this is a workshop cluster, you’re adding your console credentials as administrator.\nNow you can verify your entry in the AWS auth map within the console.\nkubectl describe configmap -n kube-system aws-auth Now you’re all set to move on. For more information, check out the EKS documentation on this topic.\n"
 },
 {
-	"uri": "/2-prerequisites/iamrole/",
-	"title": "Create an IAM role for your Workspace",
+	"uri": "/4-beginner/helm/helm_nginx/installnginx/",
+	"title": "Deploy nginx With Helm",
 	"tags": [],
 	"description": "",
-	"content": " Follow this deep link to create an IAM role with Administrator access. Confirm that AWS service and EC2 are selected, then click Next: Permissions to view permissions.  Confirm that AdministratorAccess is checked, then click Next: Tags to assign tags.  Take the defaults, and click Next: Review to review.  Enter eksworkshop-admin for the Name, and click Create role.  "
+	"content": "Installing the Bitnami standalone nginx web server Chart involves us using the helm install command.\nA Helm Chart can be installed multiple times inside a Kubernetes cluster. This is because each installation of a Chart can be customized to suit a different purpose.\nFor this reason, you must supply a unique name for the installation, or ask Helm to generate a name for you.\nhelm install mywebserver bitnami/nginx Once you run this command, the output will contain the information about the deployment status, revision, namespace, etc, similar to:\nNAME: mywebserver\rLAST DEPLOYED: Thu Jul 15 13:52:34 2021\rNAMESPACE: default\rSTATUS: deployed\rREVISION: 1\rTEST SUITE: None\rNOTES:\r** Please be patient while the chart is being deployed **\rNGINX can be accessed through the following DNS name from within your cluster:\rmywebserver-nginx.default.svc.cluster.local (port 80)\rTo access NGINX from outside the cluster, follow the steps below:\r1. Get the NGINX URL by running these commands:\rNOTE: It may take a few minutes for the LoadBalancer IP to be available.\rWatch the status with: \u0026#39;kubectl get svc --namespace default -w mywebserver-nginx\u0026#39;\rexport SERVICE_PORT=$(kubectl get --namespace default -o jsonpath=\u0026#34;{.spec.ports[0].port}\u0026#34; services mywebserver-nginx)\rexport SERVICE_IP=$(kubectl get svc --namespace default mywebserver-nginx -o jsonpath=\u0026#39;{.status.loadBalancer.ingress[0].ip}\u0026#39;)\recho \u0026#34;http://${SERVICE_IP}:${SERVICE_PORT}\u0026#34; In order to review the underlying Kubernetes services, pods and deployments, run:\nkubectl get deploy,po,svc In the following kubectl command examples, it may take a minute or two for each of these objects\u0026rsquo; DESIRED and CURRENT values to match; if they don’t match on the first try, wait a few seconds, and run the command again to check the status.\n\rThe first object shown in this output is a Deployment. A Deployment object manages rollouts (and rollbacks) of different versions of an application.\nYou can inspect this Deployment object in more detail by running the following command:\nkubectl describe deployment mywebserver The next object shown created by the Chart is a Pod. A Pod is a group of one or more containers.\nTo verify the Pod object was successfully deployed, we can run the following command:\nkubectl get pods -l app.kubernetes.io/name=nginx And you should see output similar to:\nNAME READY STATUS RESTARTS AGE\rmywebserver-nginx-85985c8466-tczst 1/1 Running 0 10s The third object that this Chart creates for us is a Service. A Service enables us to contact this nginx web server from the Internet, via an Elastic Load Balancer (ELB).\nTo get the complete URL of this Service, run:\nkubectl get service mywebserver-nginx -o wide That should output something similar to:\nNAME TYPE CLUSTER-IP EXTERNAL-IP\rmywebserver-nginx LoadBalancer 10.100.223.99 abc123.amazonaws.com Copy the value for EXTERNAL-IP, open a new tab in your web browser, and paste it in.\nIt may take a couple minutes for the ELB and its associated DNS name to become available; if you get an error, wait one minute, and hit reload.\n\rWhen the Service does come online, you should see a welcome message similar to:\nCongratulations! You’ve now successfully deployed the nginx standalone web server to your EKS cluster!\n"
+},
+{
+	"uri": "/4-beginner/deploy/servicerole/",
+	"title": "Ensure the ELB Service Role exists",
+	"tags": [],
+	"description": "",
+	"content": "In AWS accounts that have never created a load balancer before, it’s possible that the service role for ELB might not exist yet.\nWe can check for the role, and create it if it’s missing.\nCopy/Paste the following commands into your Cloud9 workspace:\naws iam get-role --role-name \u0026#34;AWSServiceRoleForElasticLoadBalancing\u0026#34; || aws iam create-service-linked-role --aws-service-name \u0026#34;elasticloadbalancing.amazonaws.com\u0026#34; "
 },
 {
 	"uri": "/1-introduce/amazon_eks/eks_high_level/",
@@ -245,11 +336,74 @@
 	"content": "In addition to the managed Amazon EKS solution, there are many tools available to help bootstrap and configure a self-managed Kubernetes cluster. They include:\n Minikube – Development and Learning Kops – Learning, Development, Production Kubeadm – Learning, Development, Production Docker for Mac - Learning, Development Kubernetes IN Docker - Learning, Development  Alongside these open source solutions, there are also many commercial options available.\nLet’s take a look at Amazon EKS!\n"
 },
 {
+	"uri": "/3-eksctl/",
+	"title": "Launch using eksctl",
+	"tags": [],
+	"description": "",
+	"content": "eksctl is a tool jointly developed by AWS and Weaveworks that automates much of the experience of creating EKS clusters.\nIn this module, we will use eksctl to launch and configure our EKS cluster and nodes.\n"
+},
+{
+	"uri": "/4-beginner/helm/helm_micro/service/",
+	"title": "Test the Service",
+	"tags": [],
+	"description": "",
+	"content": "To test the service our eksdemo Chart created, we’ll need to get the name of the ELB endpoint that was generated when we deployed the Chart:\nkubectl get svc ecsdemo-frontend -o jsonpath=\u0026#34;{.status.loadBalancer.ingress[*].hostname}\u0026#34;; echo Copy that address, and paste it into a new tab in your browser. You should see something similar to:\n"
+},
+{
 	"uri": "/1-introduce/amazon_eks/stay_tuned/",
 	"title": "Amazon EKS!",
 	"tags": [],
 	"description": "",
 	"content": "Hãy tiếp tục theo dõi chúng ta sẽ đi tiếp mô-đun tiếp theo ngay sau đây!\n"
+},
+{
+	"uri": "/4-beginner/",
+	"title": "Beginner",
+	"tags": [],
+	"description": "",
+	"content": "In this section, we will learn the basics of a Kubernetes cluster, how to configure and manage the cluster, and how to deploy and manage applications on Kubernetes. We will cover topics such as:\n Installing and configuring a Kubernetes cluster Understanding the key components of a Kubernetes cluster such as nodes, pods, and services Using kubectl to manage and deploy objects within the cluster Creating and managing applications on the cluster using YAML and manifests  This is a great opportunity to build a strong foundation for your technical development in the Kubernetes field.\n"
+},
+{
+	"uri": "/4-beginner/helm/helm_nginx/cleaningup/",
+	"title": "Cleanup",
+	"tags": [],
+	"description": "",
+	"content": "To remove all the objects that the Helm Chart created, we can use Helm uninstall.\nBefore we uninstall our application, we can verify what we have running via the Helm list command:\nhelm list You should see output similar to below, which show that mywebserver is installed:\nNAME NAMESPACE REVISION UPDATED STATUS CHART APP VERSION\rmywebserver default 1 2021-07-15 13:52:34.563653342 +0000 UTC deployed nginx-9.3.7 1.21.1 It was a lot of fun; we had some great times sending HTTP back and forth, but now its time to uninstall this deployment. To uninstall:\nhelm uninstall mywebserver And you should be met with the output:\nrelease \u0026#34;mywebserver\u0026#34; uninstalled kubectl will also demonstrate that our pods and service are no longer available:\nkubectl get pods -l app.kubernetes.io/name=nginx\rkubectl get service mywebserver-nginx -o wide As would trying to access the service via the web browser via a page reload.\nWith that, cleanup is complete.\n"
+},
+{
+	"uri": "/2-prerequisites/iamrole/",
+	"title": "Create an IAM role for your Workspace",
+	"tags": [],
+	"description": "",
+	"content": " Follow this deep link to create an IAM role with Administrator access. Confirm that AWS service and EC2 are selected, then click Next: Permissions to view permissions.  Confirm that AdministratorAccess is checked, then click Next: Tags to assign tags.  Take the defaults, and click Next: Review to review.  Enter eksworkshop-admin for the Name, and click Create role.  "
+},
+{
+	"uri": "/4-beginner/deploy/deployfrontend/",
+	"title": "Deploy FrontEnd Service",
+	"tags": [],
+	"description": "",
+	"content": "Copy/Paste the following commands into your Cloud9 workspace:\ncd ~/environment/ecsdemo-frontend\rkubectl apply -f kubernetes/deployment.yaml\rkubectl apply -f kubernetes/service.yaml We can watch the progress by looking at the deployment status:\nkubectl get deployment ecsdemo-frontend "
+},
+{
+	"uri": "/4-beginner/deploy/",
+	"title": "Deploy The Example Microservices",
+	"tags": [],
+	"description": "",
+	"content": "In the \u0026ldquo;Deploy the Example Microservices\u0026rdquo; section, you will learn how to deploy a sample microservices application on Amazon Elastic Kubernetes Service (Amazon EKS). Microservices are a popular architectural pattern used to build modern, scalable, and resilient applications.\nThe example application you will deploy is a simple e-commerce application consisting of four microservices: a frontend, a product catalog service, a cart service, and an order service. You will learn how to package each microservice in a container, deploy the containers to Amazon EKS, and expose the services using Kubernetes Service resources.\nBy following this section, you will gain practical experience in deploying microservices on Amazon EKS and learn best practices for managing microservices on a container orchestration platform. This knowledge will help you build and deploy your own microservices applications on Amazon EKS or any other container orchestration platform.\n"
+},
+{
+	"uri": "/1-introduce/kubernetes_basics/k8s_detail_2/",
+	"title": "K8s Objects Detail (2/2)",
+	"tags": [],
+	"description": "",
+	"content": "ReplicaSet A ReplicaSet is a controller that ensures the stability of replicas (number and state of PODs, replicas) while running.\nJob When deploying and operating systems, we will have many tasks (Jobs) that need to be performed periodically or once. Jobs run in K8s will execute within Pods. Pods will be created when a Job runs and will end when the Job is successful. When a Job is deleted, the related Pods will also be deleted..\nService A Kubernetes service is a resource that defines a set of pods or a group of pods providing the same service and access policy to those pods. For services, Kubernetes also provides various types of services to cater to different requirements in the IT industry.\nLabel Labels in Kubernetes are key-value pairs that are assigned to objects within the cluster such as Pods, and they are used to quickly identify and categorize these objects. They allow us to add descriptive metadata to our objects and perform operations based on those labels, such as grouping and selecting objects based on specific criteria.\n"
+},
+{
+	"uri": "/4-beginner/helm/helm_micro/rolling_back/",
+	"title": "Rolling Back",
+	"tags": [],
+	"description": "",
+	"content": "Mistakes will happen during deployment, and when they do, Helm makes it easy to undo, or “roll back” to the previously deployed version.\nUpdate the demo application chart with a breaking change Open values.yaml and modify the image name under nodejs.image to brentley/ecsdemo-nodejs-non-existing. This image does not exist, so this will break our deployment.\nDeploy the updated demo application chart:\nhelm upgrade workshop ~/environment/eksdemo The rolling upgrade will begin by creating a new nodejs pod with the new image. The new ecsdemo-nodejs Pod should fail to pull non-existing image. Run kubectl get pods to see the ImagePullBackOff error.\nkubectl get pods NAME READY STATUS RESTARTS AGE\recsdemo-crystal-56976b4dfd-9f2rf 1/1 Running 0 2m10s\recsdemo-frontend-7f5ddc5485-8vqck 1/1 Running 0 2m10s\recsdemo-nodejs-56487f6c95-mv5xv 0/1 ImagePullBackOff 0 6s\recsdemo-nodejs-58977c4597-r6hvj 1/1 Running 0 2m10s Run helm status workshop to verify the LAST DEPLOYED timestamp.\nhelm status workshop NAME: workshop\rLAST DEPLOYED: Fri Jul 16 13:53:22 2021\rNAMESPACE: default\rSTATUS: deployed\rREVISION: 2\rTEST SUITE: None\r... This should correspond to the last entry on helm history workshop\nhelm history workshop Rollback the failed upgrade Now we are going to rollback the application to the previous working release revision.\nFirst, list Helm release revisions:\nhelm history workshop Then, rollback to the previous application revision (can rollback to any revision too):\n# rollback to the 1st revision\rhelm rollback workshop 1 Validate workshop release status and you will see a new revision that is based on the rollback.\nhelm status workshop NAME: workshop\rLAST DEPLOYED: Fri Jul 16 13:55:27 2021\rNAMESPACE: default\rSTATUS: deployed\rREVISION: 3\rTEST SUITE: None Verify that the error is gone\nkubectl get pods NAME READY STATUS RESTARTS AGE\recsdemo-crystal-56976b4dfd-9f2rf 1/1 Running 0 6m\recsdemo-frontend-7f5ddc5485-8vqck 1/1 Running 0 6m\recsdemo-nodejs-58977c4597-r6hvj 1/1 Running 0 6m "
 },
 {
 	"uri": "/2-prerequisites/ec2instance/",
@@ -259,11 +413,39 @@
 	"content": " Click the grey circle button (in top right corner) and select Manage EC2 Instance.  Select the instance, then choose Actions / Security / Modify IAM Role  Choose eksworkshop-admin from the IAM Role drop down, and select Save  "
 },
 {
-	"uri": "/1-introduce/kubernetes_basics/k8s_detail_2/",
-	"title": "K8s Objects Detail (2/2)",
+	"uri": "/4-beginner/helm/helm_micro/cleanup/",
+	"title": "Cleanup",
 	"tags": [],
 	"description": "",
-	"content": "ReplicaSet A ReplicaSet is a controller that ensures the stability of replicas (number and state of PODs, replicas) while running.\nJob When deploying and operating systems, we will have many tasks (Jobs) that need to be performed periodically or once. Jobs run in K8s will execute within Pods. Pods will be created when a Job runs and will end when the Job is successful. When a Job is deleted, the related Pods will also be deleted..\nService A Kubernetes service is a resource that defines a set of pods or a group of pods providing the same service and access policy to those pods. For services, Kubernetes also provides various types of services to cater to different requirements in the IT industry.\nLabel Labels in Kubernetes are key-value pairs that are assigned to objects within the cluster such as Pods, and they are used to quickly identify and categorize these objects. They allow us to add descriptive metadata to our objects and perform operations based on those labels, such as grouping and selecting objects based on specific criteria.\n"
+	"content": "To delete the workshop release, run:\nhelm uninstall workshop "
+},
+{
+	"uri": "/4-beginner/helm/helm_nginx/",
+	"title": "Deploy nginx With Helm",
+	"tags": [],
+	"description": "",
+	"content": "In this Chapter, we will dig deeper with Helm and demonstrate how to install the nginx web server via the following steps:\n Update the Chart Repository Search Chart Repositories Add the Bitnami Repository Install bitnami/nginx Clean Up  "
+},
+{
+	"uri": "/4-beginner/deploy/viewservices/",
+	"title": "Find the Service Address",
+	"tags": [],
+	"description": "",
+	"content": "Now that we have a running service that is type: LoadBalancer we need to find the ELB’s address. We can do this by using the get services operation of kubectl:\nkubectl get service ecsdemo-frontend Notice the field isn’t wide enough to show the FQDN of the ELB. We can adjust the output format with this command:\nkubectl get service ecsdemo-frontend -o wide If we wanted to use the data programatically, we can also output via json. This is an example of how we might be able to make use of json output:\nELB=$(kubectl get service ecsdemo-frontend -o json | jq -r \u0026#39;.status.loadBalancer.ingress[].hostname\u0026#39;)\rcurl -m3 -v $ELB It will take several minutes for the ELB to become healthy and start passing traffic to the frontend pods.\n\rYou should also be able to copy/paste the loadBalancer hostname into your browser and see the application running. Keep this tab open while we scale the services up on the next page.\n"
+},
+{
+	"uri": "/4-beginner/helm/",
+	"title": "Deploy The Example Microservices",
+	"tags": [],
+	"description": "",
+	"content": "\rThis tutorial has been updated for Helm v3. In version 3, the Tiller component was removed, which simplified operations and improved security.\n\rIf you need to migrate from Helm v2 to v3 click here for the official documentation.\n\rHelm is a package manager for Kubernetes that packages multiple Kubernetes resources into a single logical deployment unit called a Chart. Charts are easy to create, version, share, and publish.\nIn this chapter, we’ll cover installing Helm. Once installed, we’ll demonstrate how Helm can be used to deploy a simple nginx webserver, and a more sophisticated microservice.\n"
+},
+{
+	"uri": "/4-beginner/deploy/scalebackend/",
+	"title": "Scale the Backend Services",
+	"tags": [],
+	"description": "",
+	"content": "When we launched our services, we only launched one container of each. We can confirm this by viewing the running pods:\nkubectl get deployments Now let’s scale up the backend services:\nkubectl scale deployment ecsdemo-nodejs --replicas=3\rkubectl scale deployment ecsdemo-crystal --replicas=3 Confirm by looking at deployments again:\nkubectl get deployments Also, check the browser tab where we can see our application running. You should now see traffic flowing to multiple backend services.\n"
 },
 {
 	"uri": "/2-prerequisites/workspaceiam/",
@@ -278,6 +460,34 @@
 	"tags": [],
 	"description": "",
 	"content": "cd ~/environment\rgit clone https://github.com/aws-containers/ecsdemo-frontend.git\rgit clone https://github.com/aws-containers/ecsdemo-nodejs.git\rgit clone https://github.com/aws-containers/ecsdemo-crystal.git "
+},
+{
+	"uri": "/4-beginner/helm/helm_micro/",
+	"title": "Deploy Example Microservices Using Helm",
+	"tags": [],
+	"description": "",
+	"content": "In this chapter, we will demonstrate how to deploy microservices using a custom Helm Chart, instead of doing everything manually using kubectl.\nFor detailed information on working with chart templates, refer to the Helm docs.\n"
+},
+{
+	"uri": "/4-beginner/healthchecks/",
+	"title": "Health Checks",
+	"tags": [],
+	"description": "",
+	"content": "By default, Kubernetes will restart a container if it crashes for any reason. It uses Liveness and Readiness probes which can be configured for running a robust application by identifying the healthy containers to send traffic to and restarting the ones when required.\nIn this section, we will understand how liveness and readiness probes are defined and test the same against different states of a pod. Below is the high level description of how these probes work.\nLiveness probes are used in Kubernetes to know when a pod is alive or dead. A pod can be in a dead state for a variety of reasons; Kubernetes will kill and recreate the pod when a liveness probe does not pass.\nReadiness probes are used in Kubernetes to know when a pod is ready to serve traffic. Only when the readiness probe passes will a pod receive traffic from the service; if a readiness probe fails traffic will not be sent to the pod.\nWe will review some examples in this module to understand different options for configuring liveness and readiness probes.\n"
+},
+{
+	"uri": "/4-beginner/deploy/scalefrontend/",
+	"title": "Scale the FrontEnd",
+	"tags": [],
+	"description": "",
+	"content": "Let’s scale up the frontend services:\nkubectl get deployments\rkubectl scale deployment ecsdemo-frontend --replicas=3\rkubectl get deployments Check the browser tab where we can see our application running. You should now see traffic flowing to multiple frontend services.\n"
+},
+{
+	"uri": "/4-beginner/deploy/cleanup/",
+	"title": "Cleanup the Applications",
+	"tags": [],
+	"description": "",
+	"content": "To delete the resources created by the applications, we should delete the application deployments:\nUndeploy the applications:\ncd ~/environment/ecsdemo-frontend\rkubectl delete -f kubernetes/service.yaml\rkubectl delete -f kubernetes/deployment.yaml\rcd ~/environment/ecsdemo-crystal\rkubectl delete -f kubernetes/service.yaml\rkubectl delete -f kubernetes/deployment.yaml\rcd ~/environment/ecsdemo-nodejs\rkubectl delete -f kubernetes/service.yaml\rkubectl delete -f kubernetes/deployment.yaml "
 },
 {
 	"uri": "/2-prerequisites/kmskey/",

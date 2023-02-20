@@ -3,7 +3,7 @@ title : "Cài đặt Kubernetes Tools"
 date :  "`r Sys.Date()`" 
 weight : 4
 chapter : false
-pre : " <b> 2.3 </b> "
+pre : " <b> 2.4 </b> "
 ---
 
 Amazon EKS cần các tập tin kubectl và kubelet và tập tin aws-cli hoặc aws-iam-authenticator để cho phép xác thực IAM cho cụm Kubernetes của bạn.
@@ -23,6 +23,7 @@ sudo curl --silent --location -o /usr/local/bin/kubectl \
 sudo chmod +x /usr/local/bin/kubectl
 
 ```
+![install-kubectl](/images/Startworkshop/install-kubectl.png?width=90pc)
 
 ## Cập nhật awscli
 
@@ -34,11 +35,16 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
+![install-kubectl](/images/Startworkshop/awscli-update.png?width=90pc)
+
 ## Cài đặt jq, envsubst (from GNU gettext utilities) and bash-completion
 
 ```
 sudo yum -y install jq gettext bash-completion moreutils
 ```
+![install-kubectl](/images/Startworkshop/jq-envsubst.png?width=90pc)
+
+
 ## Cài đặt yq cho việc xử lý yaml 
 
 ```
@@ -46,6 +52,8 @@ echo 'yq() {
   docker run --rm -i -v "${PWD}":/workdir mikefarah/yq "$@"
 }' | tee -a ~/.bashrc && source ~/.bashrc
 ```
+
+![install-kubectl](/images/Startworkshop/yq-for-yaml.png?width=90pc)
 
 ## Xác minh tập tin nhị phân trên đường dẫn và thực thi
 
@@ -55,6 +63,8 @@ for command in kubectl jq envsubst aws
     which $command &>/dev/null && echo "$command in path" || echo "$command NOT FOUND"
   done
 ```
+![install-kubectl](/images/Startworkshop/verify.png?width=90pc)
+
 ## Kích hoạt kubectl bash_completion
 
 ```
@@ -62,6 +72,7 @@ kubectl completion bash >>  ~/.bash_completion
 . /etc/profile.d/bash_completion.sh
 . ~/.bash_completion
 ```
+![install-kubectl](/images/Startworkshop/enablekubectl.png?width=90pc)
 
 ## Điều chỉnh phiên bản AWS Load Balancer Controller 
 
@@ -70,3 +81,5 @@ echo 'export LBC_VERSION="v2.4.1"' >>  ~/.bash_profile
 echo 'export LBC_CHART_VERSION="1.4.1"' >>  ~/.bash_profile
 .  ~/.bash_profile
 ```
+
+![install-kubectl](/images/Startworkshop/loadblc.png?width=90pc)

@@ -1,9 +1,9 @@
 ---
 title : "Beginner"
 date :  "`r Sys.Date()`" 
-weight : 4
+weight : 5
 chapter : false
-pre : " <b>4. </b> "
+pre : " <b> 4.</b> "
 ---
 
 In this section, we will learn the basics of a Kubernetes cluster, how to configure and manage the cluster, and how to deploy and manage applications on Kubernetes. We will cover topics such as:

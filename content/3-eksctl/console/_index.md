@@ -31,6 +31,9 @@ elif echo ${c9builder} | grep -q assumed-role; then
         echo Role ARN: ${rolearn}
 fi
 ```
+
+![nodes](/images/prerequisites/importcredentials.png?width=90pc)
+
 With your ARN in hand, you can issue the command to create the identity mapping within the cluster.
 
 ```
@@ -44,6 +47,8 @@ Now you can verify your entry in the AWS auth map within the console.
 ```
 kubectl describe configmap -n kube-system aws-auth
 ```
+
+![nodes](/images/prerequisites/describe.png?width=90pc)
 
 Now you’re all set to move on. For more information, check out the [EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html) on this topic.
 

@@ -15,11 +15,15 @@ Confirm your nodes:
 kubectl get nodes # if we see our 3 nodes, we know we have authenticated correctly
 ```
 
+![nodes](/images/prerequisites/nodes.png?width=90pc)
+
 ## Update the kubeconfig file to interact with you cluster:
 
 ```
 aws eks update-kubeconfig --name eksworkshop-eksctl --region ${AWS_REGION}
 ```
+![nodes](/images/prerequisites/updatekubeconfig.png?width=90pc)
+
 ## Export the Worker Role Name for use throughout the workshop:
 
 ```
@@ -27,6 +31,8 @@ STACK_NAME=$(eksctl get nodegroup --cluster eksworkshop-eksctl -o json | jq -r '
 ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
 echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
 ```
+
+![nodes](/images/prerequisites/exportRole.png?width=90pc)
 
 ## Congratulations!
 

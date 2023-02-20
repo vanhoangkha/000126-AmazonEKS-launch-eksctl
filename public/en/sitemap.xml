@@ -38,6 +38,30 @@
                 href="/2-prerequisites/aws_event/portal/"
                 />
   </url><url>
+    <loc>/4-beginner/healthchecks/livenessprobe/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/healthchecks/livenessprobe/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/healthchecks/livenessprobe/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_micro/create_chart/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_micro/create_chart/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_micro/create_chart/"
+                />
+  </url><url>
     <loc>/2-prerequisites/self_paced/account/</loc>
     <xhtml:link
                 rel="alternate"
@@ -48,6 +72,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="/2-prerequisites/self_paced/account/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/deploynodejs/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/deploynodejs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/deploynodejs/"
                 />
   </url><url>
     <loc>/4-beginner/dashboard/</loc>
@@ -74,16 +110,28 @@
                 href="/4-beginner/dashboard/dashboard/"
                 />
   </url><url>
-    <loc>/1-introduce/</loc>
+    <loc>/4-beginner/helm/helm_introduction/install/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-introduce/"
+                href="/vi/4-beginner/helm/helm_introduction/install/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-introduce/"
+                href="/4-beginner/helm/helm_introduction/install/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_introduction/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_introduction/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_introduction/"
                 />
   </url><url>
     <loc>/</loc>
@@ -120,6 +168,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="/3-eksctl/prerequisites/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_nginx/updatecharts/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_nginx/updatecharts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_nginx/updatecharts/"
                 />
   </url><url>
     <loc>/1-introduce/amazon_eks/eks_control_plane/</loc>
@@ -170,6 +230,18 @@
                 href="/4-beginner/dashboard/connect/"
                 />
   </url><url>
+    <loc>/4-beginner/healthchecks/readinessprobe/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/healthchecks/readinessprobe/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/healthchecks/readinessprobe/"
+                />
+  </url><url>
     <loc>/1-introduce/kubernetes_architecture/architecture_control/</loc>
     <xhtml:link
                 rel="alternate"
@@ -182,6 +254,30 @@
                 href="/1-introduce/kubernetes_architecture/architecture_control/"
                 />
   </url><url>
+    <loc>/4-beginner/helm/helm_micro/customize/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_micro/customize/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_micro/customize/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/deploycrystal/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/deploycrystal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/deploycrystal/"
+                />
+  </url><url>
     <loc>/1-introduce/amazon_eks/eks_customers/</loc>
     <xhtml:link
                 rel="alternate"
@@ -192,6 +288,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="/1-introduce/amazon_eks/eks_customers/"
+                />
+  </url><url>
+    <loc>/1-introduce/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/"
                 />
   </url><url>
     <loc>/1-introduce/kubernetes_architecture/</loc>
@@ -230,16 +338,28 @@
                 href="/3-eksctl/launcheks/"
                 />
   </url><url>
-    <loc>/2-prerequisites/</loc>
+    <loc>/4-beginner/helm/helm_nginx/searchchart/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-prerequisites/"
+                href="/vi/4-beginner/helm/helm_nginx/searchchart/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-prerequisites/"
+                href="/4-beginner/helm/helm_nginx/searchchart/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_nginx/addbitnamirepo/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_nginx/addbitnamirepo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_nginx/addbitnamirepo/"
                 />
   </url><url>
     <loc>/4-beginner/dashboard/cleanup/</loc>
@@ -252,6 +372,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="/4-beginner/dashboard/cleanup/"
+                />
+  </url><url>
+    <loc>/4-beginner/healthchecks/cleanup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/healthchecks/cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/healthchecks/cleanup/"
                 />
   </url><url>
     <loc>/2-prerequisites/workspace/</loc>
@@ -276,6 +408,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="/1-introduce/kubernetes_architecture/architecture_worker/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_micro/deploy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_micro/deploy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_micro/deploy/"
                 />
   </url><url>
     <loc>/1-introduce/amazon_eks/eks_high_architecture/</loc>
@@ -314,16 +458,28 @@
                 href="/1-introduce/kubernetes_basics/k8s_overviews/"
                 />
   </url><url>
-    <loc>/3-eksctl/</loc>
+    <loc>/4-beginner/deploy/servicetype/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/3-eksctl/"
+                href="/vi/4-beginner/deploy/servicetype/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/3-eksctl/"
+                href="/4-beginner/deploy/servicetype/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/"
                 />
   </url><url>
     <loc>/3-eksctl/test/</loc>
@@ -338,18 +494,6 @@
                 href="/3-eksctl/test/"
                 />
   </url><url>
-    <loc>/4-beginner/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/4-beginner/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/4-beginner/"
-                />
-  </url><url>
     <loc>/3-eksctl/console/</loc>
     <xhtml:link
                 rel="alternate"
@@ -362,16 +506,28 @@
                 href="/3-eksctl/console/"
                 />
   </url><url>
-    <loc>/2-prerequisites/iamrole/</loc>
+    <loc>/4-beginner/helm/helm_nginx/installnginx/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-prerequisites/iamrole/"
+                href="/vi/4-beginner/helm/helm_nginx/installnginx/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-prerequisites/iamrole/"
+                href="/4-beginner/helm/helm_nginx/installnginx/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/servicerole/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/servicerole/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/servicerole/"
                 />
   </url><url>
     <loc>/1-introduce/amazon_eks/eks_high_level/</loc>
@@ -422,6 +578,30 @@
                 href="/1-introduce/kubernetes_architecture/cluster_setup_options/"
                 />
   </url><url>
+    <loc>/3-eksctl/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/3-eksctl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/3-eksctl/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_micro/service/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_micro/service/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_micro/service/"
+                />
+  </url><url>
     <loc>/1-introduce/amazon_eks/stay_tuned/</loc>
     <xhtml:link
                 rel="alternate"
@@ -432,6 +612,90 @@
                 rel="alternate"
                 hreflang="en"
                 href="/1-introduce/amazon_eks/stay_tuned/"
+                />
+  </url><url>
+    <loc>/4-beginner/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_nginx/cleaningup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_nginx/cleaningup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_nginx/cleaningup/"
+                />
+  </url><url>
+    <loc>/2-prerequisites/iamrole/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/2-prerequisites/iamrole/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/2-prerequisites/iamrole/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/deployfrontend/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/deployfrontend/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/deployfrontend/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/"
+                />
+  </url><url>
+    <loc>/1-introduce/kubernetes_basics/k8s_detail_2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/1-introduce/kubernetes_basics/k8s_detail_2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/1-introduce/kubernetes_basics/k8s_detail_2/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_micro/rolling_back/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_micro/rolling_back/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_micro/rolling_back/"
                 />
   </url><url>
     <loc>/2-prerequisites/ec2instance/</loc>
@@ -446,16 +710,64 @@
                 href="/2-prerequisites/ec2instance/"
                 />
   </url><url>
-    <loc>/1-introduce/kubernetes_basics/k8s_detail_2/</loc>
+    <loc>/4-beginner/helm/helm_micro/cleanup/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-introduce/kubernetes_basics/k8s_detail_2/"
+                href="/vi/4-beginner/helm/helm_micro/cleanup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-introduce/kubernetes_basics/k8s_detail_2/"
+                href="/4-beginner/helm/helm_micro/cleanup/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_nginx/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_nginx/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_nginx/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/viewservices/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/viewservices/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/viewservices/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/scalebackend/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/scalebackend/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/scalebackend/"
                 />
   </url><url>
     <loc>/2-prerequisites/workspaceiam/</loc>
@@ -480,6 +792,54 @@
                 rel="alternate"
                 hreflang="en"
                 href="/2-prerequisites/clone/"
+                />
+  </url><url>
+    <loc>/4-beginner/helm/helm_micro/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/helm/helm_micro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/helm/helm_micro/"
+                />
+  </url><url>
+    <loc>/4-beginner/healthchecks/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/healthchecks/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/healthchecks/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/scalefrontend/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/scalefrontend/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/scalefrontend/"
+                />
+  </url><url>
+    <loc>/4-beginner/deploy/cleanup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/4-beginner/deploy/cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/4-beginner/deploy/cleanup/"
                 />
   </url><url>
     <loc>/2-prerequisites/kmskey/</loc>

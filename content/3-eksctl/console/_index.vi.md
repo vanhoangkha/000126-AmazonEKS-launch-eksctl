@@ -33,6 +33,8 @@ elif echo ${c9builder} | grep -q assumed-role; then
         echo Role ARN: ${rolearn}
 fi
 ```
+![nodes](/images/prerequisites/importcredentials.png?width=90pc)
+
 Với ARN của bạn, bạn có thể gửi lệnh để tạo bản đồ tương tác bên trong cluster.
 
 ```
@@ -46,5 +48,7 @@ Bây giờ bạn có thể xác thực bản ghi của bạn trong AWS auth map 
 ```
 kubectl describe configmap -n kube-system aws-auth
 ```
+
+![nodes](/images/prerequisites/describe.png?width=90pc)
 
 Bây giờ tất cả đã được setup xong. Để biết thêm thông tin, hãy xem qua [tài liệu EKS](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html) về chủ đề này

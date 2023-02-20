@@ -3,7 +3,7 @@ title : "Install Kubernetes Tools"
 date :  "`r Sys.Date()`" 
 weight : 4
 chapter : false
-pre : " <b> 2.3 </b> "
+pre : " <b> 2.4 </b> "
 ---
 
 Amazon EKS clusters require kubectl and kubelet binaries and the aws-cli or aws-iam-authenticator binary to allow IAM authentication for your Kubernetes cluster.
@@ -24,6 +24,8 @@ sudo chmod +x /usr/local/bin/kubectl
 
 ```
 
+![install-kubectl](/images/Startworkshop/install-kubectl.png?width=90pc)
+
 ## Update awscli
 
 Upgrade AWS CLI according to guidance in [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
@@ -34,11 +36,15 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
+![install-kubectl](/images/Startworkshop/awscli-update.png?width=90pc)
+
 ## Install jq, envsubst (from GNU gettext utilities) and bash-completion
 
 ```
 sudo yum -y install jq gettext bash-completion moreutils
 ```
+
+![install-kubectl](/images/Startworkshop/jq-envsubst.png?width=90pc)
 
 ## Install yq for yaml processing
 
@@ -47,6 +53,8 @@ echo 'yq() {
   docker run --rm -i -v "${PWD}":/workdir mikefarah/yq "$@"
 }' | tee -a ~/.bashrc && source ~/.bashrc
 ```
+
+![install-kubectl](/images/Startworkshop/yq-for-yaml.png?width=90pc)
 
 ## Verify the binaries are in the path and executable
 
@@ -57,6 +65,8 @@ for command in kubectl jq envsubst aws
   done
 ```
 
+![install-kubectl](/images/Startworkshop/verify.png?width=90pc)
+
 ## Enable kubectl bash_completion
 
 ```
@@ -65,6 +75,8 @@ kubectl completion bash >>  ~/.bash_completion
 . ~/.bash_completion
 ```
 
+![install-kubectl](/images/Startworkshop/enablekubectl.png?width=90pc)
+
 ## set the AWS Load Balancer Controller version
 
 ```
@@ -72,3 +84,5 @@ echo 'export LBC_VERSION="v2.4.1"' >>  ~/.bash_profile
 echo 'export LBC_CHART_VERSION="1.4.1"' >>  ~/.bash_profile
 .  ~/.bash_profile
 ```
+
+![install-kubectl](/images/Startworkshop/loadblc.png?width=90pc)
