@@ -1,6 +1,6 @@
 ---
 title : "Create an AWS KMS Custom Managed Key (CMK)"
-date :  "`r Sys.Date()`" 
+date: 2024-01-01
 weight : 9
 chapter : false
 pre : " <b> 2.9 <b> "

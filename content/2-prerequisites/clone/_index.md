@@ -1,6 +1,6 @@
 ---
 title : "Clone the Service Repos"
-date :  "`r Sys.Date()`" 
+date: 2024-01-01
 weight : 8
 chapter : false
 pre : " <b> 2.8 <b> "

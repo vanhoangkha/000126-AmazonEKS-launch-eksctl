@@ -1,6 +1,6 @@
 ---
 title : "Add the Bitnami Repository"
-date :  "`r Sys.Date()`" 
+date: 2024-01-01
 weight : 3
 chapter : false
 pre : " <b> 6.2.3 <b> "

@@ -1,6 +1,6 @@
 ---
 title : "Deploy Example Microservices Using Helm"
-date :  "`r Sys.Date()`" 
+date: 2024-01-01
 weight : 8
 chapter : false
 pre : " <b> 6.3</b> "

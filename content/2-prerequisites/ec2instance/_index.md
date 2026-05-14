@@ -1,6 +1,6 @@
 ---
 title : "Attach the IAM role to your Workspace"
-ddate :  "`r Sys.Date()`" 
+ddate: 2024-01-01
 weight : 6
 chapter : false
 pre : " <b> 2.6</b> "
