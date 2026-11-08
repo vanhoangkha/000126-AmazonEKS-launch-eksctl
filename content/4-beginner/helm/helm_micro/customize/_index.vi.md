@@ -30,7 +30,7 @@ The following steps should be completed separately for frontend.yaml, crystal.ya
 |templates/service.yaml	   |   Basic manifest for creating [Kubernetes Service objects](https://kubernetes.io/docs/concepts/services-networking/service/)|
 |tests/	   |   Directory of Test files   |
 |tests/test-connections.yaml		   |   Tests that validate that your chart works as expected when it is installed|
-{{< table />}}
+{{< /table >}}
 
 
 ```
