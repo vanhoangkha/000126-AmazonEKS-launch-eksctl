@@ -1,4 +1,4 @@
-# ☸️ Amazon EKS with eksctl
+# Amazon EKS with eksctl
 
 Launch Kubernetes clusters on EKS using eksctl.
 
@@ -8,7 +8,7 @@ This is a hands-on workshop from the **AWS First Cloud Journey** series.
 
 ## Workshop
 
-📖 **[Start the workshop](https://vanhoangkha.github.io/000126-AmazonEKS-launch-eksctl/)**
+**[Start the workshop](https://vanhoangkha.github.io/000126-AmazonEKS-launch-eksctl/)**
 
 ## Prerequisites
 

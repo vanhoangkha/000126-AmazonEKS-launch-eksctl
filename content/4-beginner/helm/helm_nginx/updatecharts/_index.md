@@ -30,7 +30,7 @@ And you should see something similar to:
 ```
 Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete. Happy Helming!
 ```
 
 Next, we’ll search for the nginx web server Chart.
